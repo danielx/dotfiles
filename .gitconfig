@@ -3,3 +3,5 @@
 	email = daniel@mailbox.sh
 [http]
 	sslVerify = true
+[core]
+	excludesfile = ~/.gitignore_global

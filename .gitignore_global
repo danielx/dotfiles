@@ -1,0 +1,10 @@
+# Mac OS
+*~
+.DS_Store
+
+# Python
+*.py[cod]
+*.egg
+*.egg-info/
+*.dist-info/
+

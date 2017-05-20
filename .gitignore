@@ -4,6 +4,7 @@
 # git related files
 !.gitignore
 !.gitconfig
+!.gitignore_global
 
 # oh-my-zsh config.
 !.zshrc
