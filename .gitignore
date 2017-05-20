@@ -1,0 +1,28 @@
+# ignore everything by default
+*
+
+# git related files
+!.gitignore
+!.gitconfig
+
+# oh-my-zsh config.
+!.zshrc
+
+# zsh customizations.
+!.zsh_custom/
+!.zsh_custom/*
+!.zsh_custom/*/*
+!.zsh_custom/*/*/*
+
+# vim.
+!.vimrc
+
+# vscode settings on Mac OS
+!Library
+!Library/Application\ Support
+!Library/Application\ Support/Code
+!Library/Application\ Support/Code/User
+!Library/Application\ Support/Code/User/*
+
+# ignore storage
+Library/Application\ Support/Code/User/workspaceStorage
