@@ -1,5 +1,6 @@
 {
     // Editor settings.
+    "editor.fontFamily": "'Noto mono', 'Monaco'",
     "editor.fontSize": 14,
     "editor.renderWhitespace": "all",
     "editor.tabSize": 2,
@@ -21,11 +22,6 @@
     "workbench.iconTheme": "file-icons",
 
     // Python settings.
-    "python.autoComplete.extraPaths": [
-        "/Users/daniel/google-cloud-sdk/platform/google_appengine/lib",
-        "/Users/daniel/google-cloud-sdk/platform/google_appengine/google"
-    ],
-
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [

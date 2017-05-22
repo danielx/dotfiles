@@ -24,6 +24,7 @@ ln -fs "${BASEDIR}/vscode" "${VSCODE_DIR}/User"
 
 # git
 ln -fs "${BASEDIR}/git/gitconfig" "$HOME/.gitconfig"
+ln -fs "${BASEDIR}/git/gitconfig.local" "$HOME/.gitconfig.local"
 ln -fs "${BASEDIR}/git/gitignore_global" "$HOME/.gitignore_global"
 
 # vim

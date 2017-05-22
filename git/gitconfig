@@ -1,7 +1,6 @@
-[user]
-	name = Daniel Liljeström
-	email = daniel@mailbox.sh
 [http]
 	sslVerify = true
 [core]
 	excludesfile = ~/.gitignore_global
+[include]
+    	path = ~/.gitconfig.local
