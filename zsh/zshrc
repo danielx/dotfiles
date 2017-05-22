@@ -99,3 +99,6 @@ export GOPATH=$HOME/go
 # Include go built binaries in path.
 export PATH=$PATH:$GOPATH/bin
 
+# do not share history
+setopt no_share_history
+
