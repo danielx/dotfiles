@@ -3,9 +3,9 @@
     "key": "ctrl+shift+d",
     "command": "editor.action.copyLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "alt+cmd+d",
-    "command": "workbench.view.debug"
+  },{
+    "key": "cmd+shift+d",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
   }
 ]
