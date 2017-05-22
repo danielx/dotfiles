@@ -23,6 +23,10 @@ fi
 ln -fs "${BASEDIR}/vscode" "${VSCODE_DIR}/User"
 
 # git
+if [ ! -f "$BASEDIR/git/gitconfig.local" ]; then
+	cp "$BASEDIR/git/gitconfig.local-example" "$BASEDIR/git/gitconfig.local"
+fi
+
 ln -fs "${BASEDIR}/git/gitconfig" "$HOME/.gitconfig"
 ln -fs "${BASEDIR}/git/gitconfig.local" "$HOME/.gitconfig.local"
 ln -fs "${BASEDIR}/git/gitignore_global" "$HOME/.gitignore_global"
@@ -37,6 +41,4 @@ fi
 
 ln -fs "${BASEDIR}/zsh/zsh_custom" "$HOME/.zsh_custom"
 ln -fs "${BASEDIR}/zsh/zshrc" "$HOME/.zshrc"
-
-git update-index --assume-unchanged git/gitconfig.local
 
