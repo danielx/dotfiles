@@ -1,6 +1,6 @@
 {
     // Editor settings.
-    "editor.fontFamily": "'Noto mono', 'Monaco'",
+    "editor.fontFamily": "Menlo, 'DejaVu Sans Mono'",
     "editor.fontSize": 14,
     "editor.renderWhitespace": "all",
     "editor.tabSize": 2,
