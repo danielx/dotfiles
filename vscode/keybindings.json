@@ -1,6 +1,6 @@
 // Place your key bindings in this file to overwrite the defaults
 [{
-    "key": "shift+cmd+d",
+    "key": "ctrl+shift+d",
     "command": "editor.action.copyLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
   },
