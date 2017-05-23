@@ -26,7 +26,7 @@
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
         "--max-line-length=100",
-        "--ignore=E111,E712"
+        "--ignore=E111,E114,E712"
     ],
 
     "python.formatting.provider": "yapf",
