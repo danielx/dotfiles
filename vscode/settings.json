@@ -32,6 +32,6 @@
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
         "--style",
-        "chromium"
+        "{based_on_style: chromium, column_limit: 100}"
     ]
 }
