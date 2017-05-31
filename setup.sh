@@ -2,6 +2,10 @@
 
 BASEDIR=$(cd "$(dirname "$0")"; pwd)
 
+# fetch git submodules
+git submodule update --init --recursive
+
+
 if [ $(uname -s) = "Darwin" ]; then
 	OS="macos"
 	VSCODE_DIR="$HOME/Library/Application Support/Code"
