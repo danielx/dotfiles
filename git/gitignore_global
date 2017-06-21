@@ -8,3 +8,5 @@
 *.egg-info/
 *.dist-info/
 
+# Visual Studio Code
+.vscode
