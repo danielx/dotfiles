@@ -1,5 +1,9 @@
 syntax on
 set number
+
+set ruler
+call matchadd('colorColumn', '\%80v', 100)
+
 set expandtab
 set tabstop=2
 set shiftwidth=2
