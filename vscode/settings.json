@@ -6,7 +6,6 @@
     "editor.tabSize": 2,
     "editor.trimAutoWhitespace": true,
     "editor.wordWrap": "off",
-
     // Files settings.
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
@@ -17,21 +16,19 @@
         "**/.DS_Store": true,
         "**/*.pyc": true
     },
-
     // Workbench settings.
     "workbench.iconTheme": "file-icons",
-
     // Python settings.
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
-        "--max-line-length=100",
-        "--ignore=E111,E114,E712"
+        "--max-line-length=80",
+        "--ignore=E111"
     ],
-
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
         "--style",
-        "{based_on_style: chromium, column_limit: 100}"
-    ]
+        "chromium"
+    ],
+    "editor.rulers": [79]
 }
