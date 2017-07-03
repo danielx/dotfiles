@@ -2,5 +2,6 @@
 	sslVerify = true
 [core]
 	excludesfile = ~/.gitignore_global
+	editor = vim
 [include]
     	path = ~/.gitconfig.local
