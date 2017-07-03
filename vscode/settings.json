@@ -30,5 +30,8 @@
         "--style",
         "chromium"
     ],
-    "editor.rulers": [79]
+    "editor.rulers": [
+        79
+    ],
+    "css.validate": false
 }
