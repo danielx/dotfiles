@@ -1,0 +1,8 @@
+# Setup PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Default go path.
+export GOPATH=$HOME/go
+
+# Include go built binaries in path.
+export PATH=$PATH:$GOPATH/bin

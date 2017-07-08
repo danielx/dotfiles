@@ -45,4 +45,5 @@ fi
 
 ln -fs "${BASEDIR}/zsh/zsh_custom" "$HOME/.zsh_custom"
 ln -fs "${BASEDIR}/zsh/zshrc" "$HOME/.zshrc"
+ln -fs "${BASEDIR}/zsh/zshenv" "$HOME/.zshenv"
 
