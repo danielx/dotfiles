@@ -1,3 +1,0 @@
-[submodule "zsh/zsh_custom/plugins/zsh-autosuggestions"]
-	path = zsh/zsh_custom/plugins/zsh-autosuggestions
-	url = git://github.com/zsh-users/zsh-autosuggestions
