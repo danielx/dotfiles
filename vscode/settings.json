@@ -1,6 +1,6 @@
 {
     // Editor settings.
-    "editor.fontFamily": "Menlo, 'DejaVu Sans Mono'",
+    "editor.fontFamily": "Noto Mono, Menlo, 'DejaVu Sans Mono'",
     "editor.fontSize": 14,
     "editor.renderWhitespace": "all",
     "editor.tabSize": 2,
@@ -33,5 +33,6 @@
     "editor.rulers": [
         79
     ],
-    "css.validate": false
+    "css.validate": false,
+    "window.menuBarVisibility": "toggle"
 }
