@@ -17,7 +17,7 @@
         "**/*.pyc": true
     },
     // Workbench settings.
-    "workbench.iconTheme": "vscode-icon-theme",
+    "workbench.iconTheme": "file-icons",
     // Python settings.
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
