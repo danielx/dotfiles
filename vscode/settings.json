@@ -1,38 +1,77 @@
 {
-    // Editor settings.
-    "editor.fontFamily": "Noto Mono, Menlo, 'DejaVu Sans Mono'",
-    "editor.fontSize": 14,
-    "editor.renderWhitespace": "all",
-    "editor.tabSize": 2,
-    "editor.trimAutoWhitespace": true,
-    "editor.wordWrap": "off",
-    // Files settings.
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/.DS_Store": true,
-        "**/*.pyc": true
+  "telemetry.enableTelemetry": false,
+  // Editor settings.
+  "editor.fontFamily": "Noto Mono, Menlo, 'DejaVu Sans Mono'",
+  "editor.fontSize": 14,
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "editor.wordWrap": "off",
+  // Files settings.
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/*.pyc": true
+  },
+  // Workbench settings.
+  "workbench.iconTheme": "file-icons",
+  // Python settings.
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+    "--max-line-length=80",
+    "--ignore=E111,E114"
+  ],
+  "python.formatting.provider": "yapf",
+  "python.formatting.yapfArgs": [
+    "--style",
+    "chromium",
+  ],
+  "editor.rulers": [
+    79
+  ],
+  "css.validate": false,
+  "window.menuBarVisibility": "toggle",
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    {
+      "language": "javascript",
+      "autoFix": true
     },
-    // Workbench settings.
-    "workbench.iconTheme": "file-icons",
-    // Python settings.
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Args": [
-        "--max-line-length=80",
-        "--ignore=E111,E114"
-    ],
-    "python.formatting.provider": "yapf",
-    "python.formatting.yapfArgs": [
-        "--style",
-        "chromium"
-    ],
-    "editor.rulers": [
-        79
-    ],
-    "css.validate": false,
-    "window.menuBarVisibility": "toggle"
+    {
+      "language": "javascriptreact",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "html",
+      "autoFix": true
+    }
+  ],
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "window.zoomLevel": 0,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "window.titleBarStyle": "custom",
+  "breadcrumbs.enabled": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
