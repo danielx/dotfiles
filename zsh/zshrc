@@ -91,3 +91,11 @@ setopt no_share_history
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=32
 bindkey '^ ' autosuggest-accept
 
+# This enables shell command completion for gcloud.
+if [ -f "/usr/lib/google-cloud-sdk/completion.bash.inc" ]
+then
+  # load bash completion functionality
+  autoload bashcompinit
+  bashcompinit
+  source "/usr/lib/google-cloud-sdk/completion.bash.inc"
+fi
