@@ -2,6 +2,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+# use vim as default editor
+export EDITOR=vim
+
 # Python user installed packages
 export PATH="$HOME/.local/bin:$PATH"
 
