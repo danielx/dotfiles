@@ -99,3 +99,11 @@ then
   bashcompinit
   source "/usr/lib/google-cloud-sdk/completion.bash.inc"
 fi
+
+# This enables shell command completion for terraform.
+if [ -f "/usr/bin/terraform" ]
+then
+  # load bash completion functionality
+  autoload -U +X bashcompinit && bashcompinit
+  complete -o nospace -C /usr/bin/terraform terraform
+fi
