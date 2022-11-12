@@ -1,6 +1,3 @@
 .DS_Store
 *.swp
-vscode/workspaceStorage
-vscode/globalStorage
 git/gitconfig.local
-

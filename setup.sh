@@ -5,27 +5,6 @@ BASEDIR=$(cd "$(dirname "$0")"; pwd)
 # fetch git submodules
 git submodule update --init --recursive
 
-
-if [ $(uname -s) = "Darwin" ]; then
-	OS="macos"
-	VSCODE_DIR="$HOME/Library/Application Support/Code"
-elif [ $(uname -s) = "Linux" ]; then
-	OS="linux"
-	VSCODE_DIR="$HOME/.config/Code"
-else
-	echo "unsupported os $(uname -s)"
-	exit 1
-fi
-
-# vscode
-if [ ! -d "${VSCODE_DIR}" ]; then
-	mkdir -p "${VSCODE_DIR}"
-elif [ -d "${VSCODE_DIR}/User" ]; then
-	rm -rf "${VSCODE_DIR}/User"
-fi
-
-ln -fs "${BASEDIR}/vscode" "${VSCODE_DIR}/User"
-
 # git
 if [ ! -f "$BASEDIR/git/gitconfig.local" ]; then
 	cp "$BASEDIR/git/gitconfig.local-example" "$BASEDIR/git/gitconfig.local"
@@ -46,4 +25,3 @@ fi
 ln -fs "${BASEDIR}/zsh/zsh_custom" "$HOME/.zsh_custom"
 ln -fs "${BASEDIR}/zsh/zshrc" "$HOME/.zshrc"
 ln -fs "${BASEDIR}/zsh/zshenv" "$HOME/.zshenv"
-
