@@ -7,3 +7,5 @@
     	path = ~/.gitconfig.local
 [push]
 	default = simple
+[init]
+	defaultBranch = main
