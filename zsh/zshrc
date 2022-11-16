@@ -91,19 +91,38 @@ setopt no_share_history
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=32
 bindkey '^ ' autosuggest-accept
 
-# This enables shell command completion for gcloud.
-if [ -f "/usr/lib/google-cloud-sdk/completion.bash.inc" ]
-then
-  # load bash completion functionality
-  autoload bashcompinit
-  bashcompinit
-  source "/usr/lib/google-cloud-sdk/completion.bash.inc"
+if [ -f "/usr/lib/google-cloud-sdk/completion.bash.inc" ]; then
+  gcloud() {
+    unset -f gcloud
+
+    # This enables shell command completion for gcloud.
+    # load bash completion functionality
+    autoload bashcompinit
+    bashcompinit
+    source "/usr/lib/google-cloud-sdk/completion.bash.inc"
+
+    gcloud $@
+  }
 fi
 
-# This enables shell command completion for terraform.
-if [ -f "/usr/bin/terraform" ]
-then
-  # load bash completion functionality
-  autoload -U +X bashcompinit && bashcompinit
-  complete -o nospace -C /usr/bin/terraform terraform
+if [ -f "/usr/bin/terraform" ]; then
+  terraform() {
+    unset -f terraform
+
+    # This enables shell command completion for terraform.
+    # load bash completion functionality
+    autoload -U +X bashcompinit && bashcompinit
+    complete -o nospace -C /usr/bin/terraform terraform
+
+    terraform $@
+  }
+fi
+
+# Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+if [ -d "$HOME/.pyenv" ]; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
 fi

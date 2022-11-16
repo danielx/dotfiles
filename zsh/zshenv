@@ -7,14 +7,3 @@ export EDITOR=vim
 
 # Python user installed packages
 export PATH="$HOME/.local/bin:$PATH"
-
-# Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# If using pyenv
-if [ -d "$HOME/.pyenv" ]
-then
-  export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
