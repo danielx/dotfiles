@@ -2,9 +2,6 @@
 
 BASEDIR=$(cd "$(dirname "$0")"; pwd)
 
-# fetch git submodules
-git submodule update --init --recursive
-
 # git
 if [ ! -f "$BASEDIR/git/gitconfig.local" ]; then
 	cp "$BASEDIR/git/gitconfig.local-example" "$BASEDIR/git/gitconfig.local"
