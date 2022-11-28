@@ -7,3 +7,6 @@ export EDITOR=vim
 
 # Python user installed packages
 export PATH="$HOME/.local/bin:$PATH"
+
+# Golang
+export PATH=$PATH:/usr/local/go/bin
