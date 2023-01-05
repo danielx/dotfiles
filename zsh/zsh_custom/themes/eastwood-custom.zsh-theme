@@ -1,31 +1,26 @@
-if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    local user_host='%n@%m'
+#!/usr/bin/zsh
+
+if [[ "$USER" != "$DEFAULT_USER" && -n "$SSH_CLIENT" ]]; then
+  ZSH_PROMPT_USER_HOST="%{$fg[yellow]%}%n@%m%{$reset_color%} "
+elif [[ "$USER" != "$DEFAULT_USER" ]]; then
+  ZSH_PROMPT_USER_HOST="%{$fg[blue]%}%n%{$reset_color%} "
+elif [[ -n "$SSH_CLIENT" ]]; then
+  ZSH_PROMPT_USER_HOST="%{$fg[yellow]%}%m%{$reset_color%} "
 else
-    local user_host=''
+  ZSH_PROMPT_USER_HOST=''
 fi
 
-
-local git_branch='$(git_prompt_info)%{$reset_color%}'
-
-#github symbols for the prompt
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}%{$fg[green]%}["
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}✗ %{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔ %{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}✚ "
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%}⚑ "
-ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}✖ "
-ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}▴ "
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[cyan]%}§ "
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[white]%}◒ "
+# git symbols for the prompt
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔%{$reset_color%}"
 
 # Customized git status, oh-my-zsh currently does not allow render dirty status before branch
 git_custom_status() {
-  local cb=$(git_current_branch)
-  if [ -n "$cb" ]; then
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(git_current_branch)]$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  GIT_CURRENT_BRANCH=$(git_current_branch)
+  if [ -n "$GIT_CURRENT_BRANCH" ]; then
+    echo "%{$fg[green]%}[$GIT_CURRENT_BRANCH]%{$reset_color%} $(parse_git_dirty)"
   fi
 }
 
-PROMPT='%{$fg[cyan]%}[%{$reset_color%}%{$fg[yellow]%}${user_host}%{$reset_color%} %{$fg[cyan]%}%~% ]$(git_custom_status)%{$reset_color%} '
+PROMPT='%{$fg[cyan]%}[%{$reset_color%}$ZSH_PROMPT_USER_HOST%{$fg[cyan]%}%~]%{$reset_color%}$(git_custom_status) '
 
