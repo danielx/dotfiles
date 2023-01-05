@@ -14,6 +14,12 @@ ln -fs "${BASEDIR}/git/gitignore_global" "$HOME/.gitignore_global"
 # vim
 ln -fs "${BASEDIR}/vim/vimrc" "$HOME/.vimrc"
 
+# tmux
+ln -fs "${BASEDIR}/tmux/tmux.conf" "$HOME/.tmux.conf"
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+fi
+
 # zsh
 if [ -d "$HOME/.zsh_custom" ]; then
 	rm -rf "$HOME/.zsh_custom"
