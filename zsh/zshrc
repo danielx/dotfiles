@@ -87,10 +87,6 @@ source $ZSH/oh-my-zsh.sh
 # do not share history
 setopt no_share_history
 
-# zsh-autosuggestions prefs
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=32
-bindkey '^ ' autosuggest-accept
-
 if [ -f "/usr/lib/google-cloud-sdk/completion.bash.inc" ]; then
   gcloud() {
     unset -f gcloud
