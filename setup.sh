@@ -29,6 +29,12 @@ if [ "$(uname)" = "Linux" ]; then
   ln -fs "${BASEDIR}/scripts/yank" "$HOME/.local/bin/yank"
 fi
 
+# rxvt-unicode on linux since it supports OSC 52
+if [ "$(uname)" = "Linux" ]; then
+  ln -fs "${BASEDIR}/Xresources" "$HOME/.Xresources"
+  ln -fs "${BASEDIR}/urxvt" "$HOME/.urxvt"
+fi
+
 # zsh
 if [ -d "$HOME/.zsh_custom" ]; then
 	rm -rf "$HOME/.zsh_custom"
