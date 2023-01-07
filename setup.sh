@@ -20,6 +20,15 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 fi
 
+# script to handle copying text to the host terminal on remote sessions using
+# the OSC 52 escape sequence.
+# supported by iterm2 on macos and rxvt-unicode (requires custom extension).
+if [ "$(uname)" = "Linux" ]; then
+  # only install on linux since iterm2 handles it w/o needing this in tmux
+  mkdir -p "$HOME/.local/bin"
+  ln -fs "${BASEDIR}/scripts/yank" "$HOME/.local/bin/yank"
+fi
+
 # zsh
 if [ -d "$HOME/.zsh_custom" ]; then
 	rm -rf "$HOME/.zsh_custom"
