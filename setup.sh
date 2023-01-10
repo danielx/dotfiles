@@ -13,6 +13,7 @@ ln -fs "${BASEDIR}/git/gitignore_global" "$HOME/.gitignore_global"
 
 # vim
 ln -fs "${BASEDIR}/vim/vimrc" "$HOME/.vimrc"
+ln -fs "${BASEDIR}/nvim" "$HOME/.config/nvim"
 
 # tmux
 ln -fs "${BASEDIR}/tmux/tmux.conf" "$HOME/.tmux.conf"
