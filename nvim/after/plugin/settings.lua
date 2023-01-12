@@ -9,7 +9,8 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Tabbing
-vim.opt.tabstop = 4
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
 -- Scroll offset
 vim.wo.scrolloff = 8
