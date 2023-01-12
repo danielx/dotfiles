@@ -18,7 +18,6 @@ null_ls.setup({
     formatting.isort,
     diagnostics.flake8,
     -- Golang
-    formatting.gofmt,
     formatting.goimports,
     -- JS/TS
     formatting.prettier,
