@@ -25,5 +25,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Buffer handling
-vim.keymap.set('n', '<leader>q', '<cmd>Bdelete<CR>', { desc = ':bd' })
-vim.keymap.set('n', '<leader>Q', '<cmd>Bdelete!<CR>', { desc = ':bd!' })
+vim.keymap.set('n', '<leader>q', '<cmd>bdelete<CR>', { desc = ':bd' })
+vim.keymap.set('n', '<leader>Q', '<cmd>bdelete!<CR>', { desc = ':bd!' })

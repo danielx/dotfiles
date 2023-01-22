@@ -1,4 +1,4 @@
 .DS_Store
 *.swp
 git/gitconfig.local
-packer_compiled.lua
+lazy-lock.json
