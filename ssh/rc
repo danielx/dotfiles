@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+if [ ! -S "$HOME/.ssh/ssh_auth_sock" ] && [ -S "$SSH_AUTH_SOCK" ]; then
+	ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh_auth_sock"
+	chmod 700 "$HOME/.ssh/ssh_auth_sock"
+fi

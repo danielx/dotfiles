@@ -14,6 +14,9 @@ ln -fs "${BASEDIR}/git/gitconfig" "$HOME/.gitconfig"
 ln -fs "${BASEDIR}/git/gitconfig.local" "$HOME/.gitconfig.local"
 ln -fs "${BASEDIR}/git/gitignore_global" "$HOME/.gitignore_global"
 
+# ssh
+ln -fs "${BASEDIR}/ssh/rc" "$HOME/.ssh/rc"
+
 # vim
 ln -fs "${BASEDIR}/vim/vimrc" "$HOME/.vimrc"
 if [ -d "$HOME/.config/nvim" ]; then
