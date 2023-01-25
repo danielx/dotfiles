@@ -26,7 +26,7 @@ return {
         keys = {
             { '<leader>?', '<cmd>Telescope oldfiles<cr>', desc = '[?] Find recently opened files' },
             { '<leader><space>', '<cmd>Telescope buffers<cr>', desc = '[ ] Find existing buffers' },
-            { '<leader>e', ':Telescope file_browser<CR>', desc = 'File [E]xplorer' },
+            { '<leader>se', ':Telescope file_browser<CR>', desc = '[S]earch File [E]xplorer' },
             {
                 '<leader>/',
                 function()
@@ -112,7 +112,18 @@ return {
                 spacing = 3, -- spacing between columns
                 align = 'left', -- align columns left, center or right
             },
-        }
+        },
+        config = function(_, opts)
+            local wk = require('which-key')
+            wk.setup(opts)
+            wk.register({
+                ['<leader>s'] = { name = '+search' },
+                ['<leader>l'] = { name = '+lsp' },
+                ['<leader>c'] = { name = '+lsp' },
+                ['<leader>w'] = { name = '+workspace' },
+                ['<leader>x'] = { name = '+trouble' },
+            })
+        end
     },
 
     -- easily jump to any location and enhanced f/t motions for Leap
@@ -167,7 +178,7 @@ return {
             { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
             { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
             { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-            { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+            { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "[S]earch [T]odo" },
         },
     },
 }
