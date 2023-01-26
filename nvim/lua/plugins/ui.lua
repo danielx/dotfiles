@@ -93,18 +93,7 @@ return {
 		event = "VimEnter",
 		opts = function()
 			local dashboard = require("alpha.themes.dashboard")
-			local logo = [[
- ________
-< Hello! >
- --------
-		\	^__^
-		 \	(oo)\_______
-			(__)\		)\/\
-				||----w |
-				||	   ||
-	  ]]
 
-			dashboard.section.header.val = vim.split(logo, "\n")
 			dashboard.section.buttons.val = {
 				dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
 				dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
@@ -146,7 +135,14 @@ return {
 				callback = function()
 					local stats = require("lazy").stats()
 					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-					dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+					local msg = "Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+					local handle = io.popen(string.format("cowsay '%s'", msg))
+					if handle ~= nil then
+						dashboard.section.header.val = handle:read("*a")
+						handle:close()
+					else
+						dashboard.section.header.val = msg
+					end
 					pcall(vim.cmd.AlphaRedraw)
 				end,
 			})
