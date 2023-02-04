@@ -29,20 +29,6 @@ return {
 		},
 	},
 
-	-- tabs
-	{
-		'akinsho/bufferline.nvim',
-		event = 'VeryLazy',
-		config = function()
-			require('bufferline').setup({
-				options = {
-					show_close_icon = false,
-					always_show_bufferline = false,
-				},
-			})
-		end,
-	},
-
 	-- lualine
 	{
 		'nvim-lualine/lualine.nvim',
