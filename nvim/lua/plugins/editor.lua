@@ -166,4 +166,16 @@ return {
             { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "[S]earch [T]odo" },
         },
     },
+
+    -- system clipboard yanking
+    {
+        'ojroques/nvim-osc52',
+        event = 'BufReadPost',
+        config = {
+            silent = false,
+        },
+        keys = {
+            { '<leader>y', function() require('osc52').copy_visual() end, desc = 'Yank to clipboard', mode = { 'x' } },
+        },
+    },
 }
