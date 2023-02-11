@@ -79,6 +79,14 @@ return {
         end,
     },
 
+    {
+        'windwp/nvim-spectre',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        keys = {
+            { '<leader>sr', '<cmd>lua require("spectre").open()<CR>' },
+        },
+    },
+
     -- git indicators
     {
         'lewis6991/gitsigns.nvim',
@@ -92,6 +100,31 @@ return {
                 changedelete = { text = '~' },
             },
         },
+        keys = {
+            { '<leader>gd', '<CMD>Gitsigns diffthis<CR>' },
+            { '<leader>gb', '<CMD>Gitsigns blame_line<CR>' },
+            { '[c',         '<CMD>Gitsigns prev_hunk<CR>' },
+            { ']c',         '<CMD>Gitsigns next_hunk<CR>' },
+        }
+    },
+
+    -- git management
+    {
+        'kdheepak/lazygit.nvim',
+        event = 'VeryLazy',
+        keys = {
+            { '<leader>gg', '<CMD>LazyGit<CR>' },
+        }
+    },
+
+    -- floating terminal
+    {
+        'numToStr/FTerm.nvim',
+        event = 'VeryLazy',
+        keys = {
+            { '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>' },
+            { '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', mode = { 't' } }
+        }
     },
 
     -- help :)
@@ -122,6 +155,7 @@ return {
                 ['<leader>c'] = { name = '+lsp' },
                 ['<leader>w'] = { name = '+workspace' },
                 ['<leader>x'] = { name = '+trouble' },
+                ['<leader>g'] = { name = '+git' },
             })
         end
     },
