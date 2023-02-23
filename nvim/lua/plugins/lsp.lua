@@ -40,6 +40,7 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",
+			"ray-x/lsp_signature.nvim",
 		},
 		config = function()
 			-- Ensure the servers above are installed
@@ -67,6 +68,7 @@ return {
 					vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
 				end
 
+				require("lsp_signature").on_attach({}, bufnr)
 				nmap('<leader>f', vim.lsp.buf.format, '[F]ormat')
 				nmap('<leader>cr', vim.lsp.buf.rename, '[R]ename')
 				nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
