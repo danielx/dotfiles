@@ -41,6 +41,18 @@ return {
 				section_separators = '',
 				disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
 			},
+			sections = {
+				lualine_c = {
+					'filename',
+					{
+						function()
+							local key = require("grapple").key()
+							return "[" .. key .. "]"
+						end,
+						cond = require("grapple").exists
+					}
+				}
+			}
 		},
 	},
 

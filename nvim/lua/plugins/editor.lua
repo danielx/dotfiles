@@ -173,6 +173,21 @@ return {
         end,
     },
 
+    -- hotlist
+    {
+        "cbochs/grapple.nvim",
+        event = "BufReadPre",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        keys = {
+            { "<leader>m", function() require("grapple").toggle() end,            desc = "Grapple mark" },
+            { "<leader>M", function() require("grapple").popup_tags() end,        desc = "Grapple popup" },
+            { "<C-f>",     function() require("grapple").select({ key = 1 }) end, },
+            { "<C-s>",     function() require("grapple").select({ key = 2 }) end, },
+            { "<C-e>",     function() require("grapple").select({ key = 3 }) end, },
+            { "<C-y>",     function() require("grapple").select({ key = 4 }) end, },
+        }
+    },
+
     -- better diagnostics list and others
     {
         "folke/trouble.nvim",
