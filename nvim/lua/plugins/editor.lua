@@ -12,8 +12,7 @@ return {
             defaults = {
                 mappings = {
                     i = {
-                        ['<C-u>'] = false,
-                        ['<C-d>'] = 'delete_buffer',
+                        ['<C-h>'] = 'which_key',
                     },
                 },
             },
