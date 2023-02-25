@@ -25,9 +25,16 @@ fi
 ln -fs "${BASEDIR}/nvim" "$HOME/.config/nvim"
 
 # tmux
-ln -fs "${BASEDIR}/tmux/tmux.conf" "$HOME/.tmux.conf"
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-	git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+TMUX_HOME="$HOME/.config/tmux"
+if [ -d "$TMUX_HOME" ]; then
+	rm -rf "$TMUX_HOME"
+fi
+ln -fs "${BASEDIR}/tmux" "$TMUX_HOME"
+ln -fs "${BASEDIR}/scripts/tmux-status-meminfo" "$HOME/.local/bin/tmux-status-meminfo"
+ln -fs "${BASEDIR}/scripts/tmux-status-loadinfo" "$HOME/.local/bin/tmux-status-loadinfo"
+
+if [ ! -d "$TMUX_HOME/plugins/tpm" ]; then
+	git clone https://github.com/tmux-plugins/tpm "$TMUX_HOME/plugins/tpm"
 fi
 
 # script to handle copying text to the host terminal on remote sessions using

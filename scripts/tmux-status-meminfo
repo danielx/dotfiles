@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ "$(uname)" = "Darwin" ]; then
+	used_mem=$(vm_stat | grep ' active\|wired ' | sed 's/[^0-9]//g' | paste -sd ' ' - | awk -v pagesize="$(pagesize)" '{printf "%d\n", ($1+$2) * pagesize / 1048576}')
+	total_mem=$(system_profiler SPHardwareDataType | grep "Memory:" | awk '{print $2 substr($3, 1, length($3)-1)}')
+	if ((used_mem < 1024)); then
+		echo "${used_mem}M/${total_mem}"
+	else
+		used_mem=$((used_mem / 1024))
+		echo "${used_mem}G/${total_mem}"
+	fi
+else
+	zfs_size=0
+	if [ -f "/proc/spl/kstat/zfs/arcstats" ]; then
+		zfs_size=$(awk '/^size/{print $3 / 1024 / 1024}' < /proc/spl/kstat/zfs/arcstats)
+	fi
+
+	total_mem=$(free -m | awk '/^Mem/ {print $2}')
+	memory_usage=$(free -m | awk "/^Mem/ {print \$3 - $zfs_size}")
+	if [[ $total_mem -lt 1024 ]]; then
+		echo "${memory_usage}M/${total_mem}M"
+	elif [[ $memory_usage -lt 1024 ]]; then
+		awk "BEGIN{ printf \"%dM/%dG\",$memory_usage,$total_mem/1024 }"
+	else
+		awk "BEGIN{ printf \"%.1fG/%dG\",$memory_usage/1024,$total_mem/1024 }"
+	fi
+fi

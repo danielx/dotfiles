@@ -141,7 +141,7 @@ fi
 alias vim="nvim"
 
 # tmux
-alias t='tmux attach || tmux new-session'
 alias ta='tmux attach -t'
-alias tn='tmux new-session'
+alias tn='tmux new -s $(basename $(pwd))'
+alias t="$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin/t"
 alias tl='tmux list-sessions'

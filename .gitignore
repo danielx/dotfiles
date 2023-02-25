@@ -2,3 +2,4 @@
 *.swp
 git/gitconfig.local
 lazy-lock.json
+tmux/plugins
