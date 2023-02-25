@@ -138,7 +138,7 @@ if [[ -n "$SSH_CONNECTION" && -n "$TMUX" ]]; then
 fi
 
 # nvim
-alias vim="nvim"
+alias v="nvim"
 
 # tmux
 alias ta='tmux attach -t'
