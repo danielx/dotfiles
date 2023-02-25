@@ -92,7 +92,32 @@ fi
 
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  NVIM_DEFAULT_ALIAS=$(< "$NVM_DIR/alias/default")
+
+  # recursively follow the alias until it no longer resolves to a file
+  while [ -f "$NVM_DIR/alias/$NVIM_DEFAULT_ALIAS" ]; do
+    NVIM_DEFAULT_ALIAS=$(< "$NVM_DIR/alias/$NVIM_DEFAULT_ALIAS")
+  done
+
+  NVIM_DEFAULT_PATH="$NVM_DIR/versions/node/$NVIM_DEFAULT_ALIAS/bin"
+  if ! [ -d $NVIM_DEFAULT_PATH ]; then
+    # fallback to loading nvim the old way
+    echo "slow loading nvm"
+    \. "$NVM_DIR/nvm.sh"
+  elif; then
+    export PATH="$PATH:$NVIM_DEFAULT_PATH"
+
+    # lazy load nvm
+    nvm() {
+      unset -f nvm
+      export PATH=$(echo $PATH | sed -e "s#:$NVIM_DEFAULT_PATH##")
+      \. "$NVM_DIR/nvm.sh"
+      nvm $@
+    }
+  fi
+fi
 
 if [ -d "$HOME/.pyenv" ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
