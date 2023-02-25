@@ -36,7 +36,7 @@ vim.opt.listchars:append "tab:→ "
 vim.opt.mouse = 'a'
 
 -- disable wrap
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- Enable break indent
 vim.opt.breakindent = true
