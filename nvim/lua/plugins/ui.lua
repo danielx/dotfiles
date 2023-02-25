@@ -17,6 +17,13 @@ return {
 		end,
 	},
 
+	{
+		'xiyaowong/nvim-transparent',
+		opts = {
+			enable = true,
+		},
+	},
+
 	-- show indentation guides
 	{
 		"lukas-reineke/indent-blankline.nvim",
