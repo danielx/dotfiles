@@ -116,6 +116,12 @@ return {
         }
     },
 
+    -- tmux navigation
+    {
+        'christoomey/vim-tmux-navigator',
+        event = 'VeryLazy',
+    },
+
     -- floating terminal
     {
         'numToStr/FTerm.nvim',
