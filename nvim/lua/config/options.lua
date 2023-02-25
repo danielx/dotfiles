@@ -38,6 +38,10 @@ vim.opt.mouse = 'a'
 -- disable wrap
 vim.opt.wrap = true
 
+-- more logical splits
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -63,7 +67,6 @@ vim.cmd [[colorscheme melange]]
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = 'menuone,noselect'
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et
