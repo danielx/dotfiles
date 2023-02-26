@@ -3,5 +3,5 @@
 if [ "$(uname)" = "Darwin" ]; then
 	echo $(uptime | cut -f 4 -d ':')
 else
-	echo $(uptime | cut -f 5 -d ":" | sed -e 's/,//')
+	echo $(uptime | cut -f 5 -d ":" | sed -e 's/,//g')
 fi
