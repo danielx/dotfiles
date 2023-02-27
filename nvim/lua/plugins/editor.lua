@@ -89,7 +89,7 @@ return {
     -- git indicators
     {
         'lewis6991/gitsigns.nvim',
-        event = 'BufReadPre',
+		event = { 'BufReadPre', 'BufNewFile' },
         opts = {
             signs = {
                 add = { text = '+' },
@@ -182,7 +182,7 @@ return {
     -- hotlist
     {
         "cbochs/grapple.nvim",
-        event = "BufReadPre",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
             { "<leader>m", function() require("grapple").toggle() end,            desc = "Grapple mark" },
@@ -210,7 +210,7 @@ return {
     {
         "folke/todo-comments.nvim",
         cmd = { "TodoTrouble", "TodoTelescope" },
-        event = "BufReadPost",
+        event = { "BufReadPost", "BufNewFile" },
         config = true,
         -- stylua: ignore
         keys = {
@@ -225,7 +225,7 @@ return {
     -- system clipboard yanking
     {
         'ojroques/nvim-osc52',
-        event = 'BufReadPost',
+        event = { 'BufReadPost', 'BufNewFile' },
         config = {
             silent = false,
         },

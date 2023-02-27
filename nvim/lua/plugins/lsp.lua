@@ -33,7 +33,7 @@ return {
 	-- lsp servers
 	{
 		'neovim/nvim-lspconfig',
-		event = 'BufReadPre',
+		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
 			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
 			{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
@@ -122,6 +122,7 @@ return {
 	-- null-ls
 	{
 		'jose-elias-alvarez/null-ls.nvim',
+		event = { 'BufReadPre', 'BufNewFile' },
 		config = function()
 			local nls = require('null-ls')
 

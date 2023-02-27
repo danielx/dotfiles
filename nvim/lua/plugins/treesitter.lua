@@ -2,7 +2,7 @@ return {
 	-- display context when its out of view (above scroll)
 	{
 		'nvim-treesitter/nvim-treesitter-context',
-		event = 'BufReadPre',
+		event = { 'BufReadPre', 'BufNewFile' },
 		config = true,
 	},
 
@@ -12,7 +12,7 @@ return {
 		'nvim-treesitter/nvim-treesitter', -- Add languages to be installed here that you want installed for treesitter
 		version = false, -- last release is way too old and doesn't work on Windows
 		build = ":TSUpdate",
-		event = "BufReadPost",
+		event = { 'BufReadPost', 'BufNewFile' },
 		opts = {
 			ensure_installed = {
 				'go',

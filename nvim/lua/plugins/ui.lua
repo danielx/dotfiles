@@ -27,7 +27,7 @@ return {
 	-- show indentation guides
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			char = "│",
 			filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },

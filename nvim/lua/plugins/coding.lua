@@ -86,7 +86,7 @@ return {
 	-- auto pairs
 	{
 		'echasnovski/mini.pairs',
-		event = 'VeryLazy',
+		event = { 'BufReadPre', 'BufNewFile' },
 		config = function(_, opts)
 			require('mini.pairs').setup(opts)
 		end,
@@ -129,7 +129,7 @@ return {
 	{ 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true },
 	{
 		'echasnovski/mini.comment',
-		event = 'VeryLazy',
+		event = { 'BufReadPre', 'BufNewFile' },
 		opts = {
 			hooks = {
 				pre = function()
