@@ -107,15 +107,6 @@ return {
         }
     },
 
-    -- git management
-    {
-        'kdheepak/lazygit.nvim',
-        event = 'VeryLazy',
-        keys = {
-            { '<leader>gg', '<CMD>LazyGit<CR>' },
-        }
-    },
-
     -- tmux navigation
     {
         'christoomey/vim-tmux-navigator',
