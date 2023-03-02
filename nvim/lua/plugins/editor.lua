@@ -214,6 +214,14 @@ return {
             { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
             { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "[S]earch [T]odo" },
         },
+        opts = {
+            highlight = {
+                pattern = [[(KEYWORDS)]], -- match without the extra colon.
+            },
+            search = {
+                pattern = [[\b(KEYWORDS)(:|\s)]], -- match without the extra colon.
+            },
+        },
     },
 
     -- system clipboard yanking
