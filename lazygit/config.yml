@@ -1,0 +1,7 @@
+gui:
+  scrollHeight: 14 # about 1/2 page
+  showIcons: true
+keybinding:
+  commits:
+    moveDownCommit: '<c-n>'
+    moveUpCommit: '<c-p>'

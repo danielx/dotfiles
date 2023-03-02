@@ -37,6 +37,14 @@ if [ ! -d "$TMUX_HOME/plugins/tpm" ]; then
 	git clone https://github.com/tmux-plugins/tpm "$TMUX_HOME/plugins/tpm"
 fi
 
+if [ "$(uname)" = "Linux" ]; then
+	mkdir -p "$HOME/.config/lazygit"
+	ln -fs "${BASEDIR}/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
+else
+	mkdir -p "$HOME/Library/Application Support/lazygit"
+	ln -fs "${BASEDIR}/lazygit/config.yml" "$HOME/Library/Application Support/lazygit/config.yml"
+fi
+
 # script to handle copying text to the host terminal on remote sessions using
 # the OSC 52 escape sequence.
 # supported by iterm2 on macos and rxvt-unicode (requires custom extension).
