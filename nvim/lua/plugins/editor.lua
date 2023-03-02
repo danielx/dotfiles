@@ -111,6 +111,9 @@ return {
     {
         'christoomey/vim-tmux-navigator',
         event = 'VeryLazy',
+        config = function()
+            vim.g.tmux_navigator_no_wrap = 1
+        end,
     },
 
     -- floating terminal
