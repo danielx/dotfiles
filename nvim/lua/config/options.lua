@@ -66,7 +66,7 @@ vim.opt.termguicolors = true
 vim.cmd [[colorscheme melange]]
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = 'menu,menuone,noselect'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et
