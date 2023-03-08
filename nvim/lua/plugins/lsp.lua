@@ -21,7 +21,7 @@ local servers = {
 
 	dockerls = {},
 
-	sumneko_lua = {
+	lua_language_server = {
 		Lua = {
 			workspace = { checkThirdParty = false },
 			telemetry = { enable = false },
