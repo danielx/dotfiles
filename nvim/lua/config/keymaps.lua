@@ -45,3 +45,7 @@ vim.keymap.set('n', '[b', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
 vim.keymap.set('n', ']b', '<cmd>bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '[B', '<cmd>bfirst<CR>', { desc = 'First buffer' })
 vim.keymap.set('n', ']B', '<cmd>blast<CR>', { desc = 'Last buffer' })
+
+-- deleting/pasting without polluting registers
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without overwriting register" })
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without saving to register" })
