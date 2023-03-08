@@ -49,8 +49,12 @@ return {
 				disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
 			},
 			sections = {
+				lualine_b = { 'diff', 'diagnostics' },
 				lualine_c = {
-					'filename',
+					{
+						'filename',
+						path = 1,
+					},
 					{
 						function()
 							local key = require("grapple").key()
@@ -58,8 +62,25 @@ return {
 						end,
 						cond = require("grapple").exists
 					}
-				}
-			}
+				},
+				lualine_x = {},
+			},
+			inactive_sections = {
+				lualine_b = { 'diff' },
+				lualine_c = {
+					{
+						'filename',
+						path = 1,
+					},
+					{
+						function()
+							local key = require("grapple").key()
+							return "[" .. key .. "]"
+						end,
+						cond = require("grapple").exists
+					}
+				},
+			},
 		},
 	},
 
