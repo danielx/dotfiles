@@ -62,6 +62,13 @@ return {
                 end,
                 desc = '[S]earch [D]iagnostics'
             },
+            {
+                '<leader>sc',
+                function()
+                    require('telescope.builtin').git_status()
+                end,
+                desc = '[S]earch [C]hanges'
+            },
         },
         config = function(_, opts)
             local telescope = require('telescope')
@@ -75,7 +82,7 @@ return {
         'windwp/nvim-spectre',
         dependencies = { 'nvim-lua/plenary.nvim' },
         keys = {
-            { '<leader>sr', '<cmd>lua require("spectre").open()<CR>' },
+            { '<leader>sr', '<cmd>lua require("spectre").open()<CR>', desc = '[S]earch [R]eplace' },
         },
     },
 
