@@ -1,7 +1,14 @@
 gui:
   scrollHeight: 14 # about 1/2 page
   showIcons: true
+  theme:
+    selectedLineBgColor:
+      - black
+    selectedRangeBgColor:
+      - black
+    cherryPickedCommitFgColor:
+      - black
 keybinding:
   commits:
-    moveDownCommit: '<c-n>'
-    moveUpCommit: '<c-p>'
+    moveDownCommit: "<c-n>"
+    moveUpCommit: "<c-p>"
