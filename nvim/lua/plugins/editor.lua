@@ -9,13 +9,6 @@ return {
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         },
         opts = {
-            defaults = {
-                mappings = {
-                    i = {
-                        ['<C-h>'] = 'which_key',
-                    },
-                },
-            },
             extensions = {
                 file_browser = {
                     hijack_netrw = true
