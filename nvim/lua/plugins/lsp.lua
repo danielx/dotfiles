@@ -17,7 +17,6 @@ local servers = {
 	vuels = {}, -- Vue 2 (volar for vue3)
 
 	jsonls = {},
-	yamlls = {},
 
 	dockerls = {},
 
@@ -148,8 +147,6 @@ return {
 					formatting.shfmt,
 					diagnostics.shellcheck,
 					diagnostics.zsh,
-					-- YAML
-					diagnostics.yamllint,
 				},
 			})
 		end,
