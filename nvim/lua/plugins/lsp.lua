@@ -68,7 +68,6 @@ return {
 				end
 
 				require("lsp_signature").on_attach({}, bufnr)
-				nmap('<leader>f', vim.lsp.buf.format, '[F]ormat')
 				nmap('<leader>cr', vim.lsp.buf.rename, '[R]ename')
 				nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 				nmap('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'Document [S]ymbols')
@@ -105,6 +104,7 @@ return {
 				end, { desc = 'Format current buffer with LSP' })
 			end
 
+			vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = '[F]ormat' })
 			-- setup neovim/nvim-lspconfig
 			mason_lspconfig.setup_handlers {
 				function(server_name)
