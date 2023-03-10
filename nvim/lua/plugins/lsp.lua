@@ -1,25 +1,16 @@
 -- Enable the following language servers
 local servers = {
 	clangd = {},
-
 	bashls = {},
-
 	gopls = {},
-
 	pyright = {},
-
 	tsserver = {},
 	eslint = {},
-
 	cssls = {},
 	html = {},
-
 	vuels = {}, -- Vue 2 (volar for vue3)
-
 	jsonls = {},
-
 	dockerls = {},
-
 	lua_language_server = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -34,8 +25,15 @@ return {
 		'neovim/nvim-lspconfig',
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
-			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-			{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+			{
+				"folke/neoconf.nvim",
+				cmd = "Neoconf",
+				config = true,
+			},
+			{
+				"folke/neodev.nvim",
+				opts = { experimental = { pathStrict = true } },
+			},
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",
