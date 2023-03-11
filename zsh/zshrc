@@ -130,13 +130,13 @@ fi
 
 # Customized git status
 ZSH_PROMPT_GIT_STATUS() {
-  BRANCH="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-    STATUS="$(git status --porcelain --untracked-files=no 2>/dev/null | tail -n 1)"
-    if [[ -n "$STATUS" ]]; then
-      echo "%{$fg[white]%}[$BRANCH] %{$fg[red]%}✗"
+  local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
+  if [[ -n $git_branch ]]; then
+    local is_dirty="$(git status --porcelain --untracked-files=no 2>/dev/null | tail -n 1)"
+    if [[ -n "$is_dirty" ]]; then
+      echo "%{$fg[white]%}[$git_branch] %{$fg[red]%}✗"
     else
-      echo "%{$fg[white]%}[$BRANCH] %{$fg[green]%}✔"
+      echo "%{$fg[white]%}[$git_branch] %{$fg[green]%}✔"
     fi
   fi
 }
@@ -227,32 +227,35 @@ if [ -f "/usr/bin/terraform" ]; then
 fi
 
 # Node Version Manager
-export NVM_DIR="$HOME/.nvm"
+if [ -s "$HOME/.nvm/nvm.sh" ]; then
+  export NVM_DIR="$HOME/.nvm"
 
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-  NVIM_DEFAULT_ALIAS=$(< "$NVM_DIR/alias/default")
+  function () {
+    local nvm_default_alias nvm_default_path
+    nvm_default_alias=$(< "$NVM_DIR/alias/default")
 
-  # recursively follow the alias until it no longer resolves to a file
-  while [ -f "$NVM_DIR/alias/$NVIM_DEFAULT_ALIAS" ]; do
-    NVIM_DEFAULT_ALIAS=$(< "$NVM_DIR/alias/$NVIM_DEFAULT_ALIAS")
-  done
+    # recursively follow the alias until it no longer resolves to a file
+    while [ -f "$NVM_DIR/alias/$nvm_default_alias" ]; do
+      nvm_default_alias=$(< "$NVM_DIR/alias/$nvm_default_alias")
+    done
 
-  NVIM_DEFAULT_PATH="$NVM_DIR/versions/node/$NVIM_DEFAULT_ALIAS/bin"
-  if ! [ -d $NVIM_DEFAULT_PATH ]; then
-    # fallback to loading nvim the old way
-    echo "slow loading nvm"
-    \. "$NVM_DIR/nvm.sh"
-  elif; then
-    export PATH="$PATH:$NVIM_DEFAULT_PATH"
-
-    # lazy load nvm
-    nvm() {
-      unset -f nvm
-      export PATH=$(echo $PATH | sed -e "s#:$NVIM_DEFAULT_PATH##")
+    nvm_default_path="$NVM_DIR/versions/node/$nvm_default_alias/bin"
+    if ! [ -d $nvm_default_path ]; then
+      # fallback to loading nvm the old way
+      echo "slow loading nvm"
       \. "$NVM_DIR/nvm.sh"
-      nvm $@
-    }
-  fi
+    elif; then
+      export PATH="$PATH:$nvm_default_path"
+
+      # lazy load nvm
+      nvm() {
+        unset -f nvm
+        export PATH=$(echo $PATH | sed -e "s#:$nvm_default_path##")
+        \. "$NVM_DIR/nvm.sh"
+        nvm $@
+      }
+    fi
+  }
 fi
 
 if [ -d "$HOME/.pyenv" ]; then
