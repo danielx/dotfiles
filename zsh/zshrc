@@ -267,6 +267,10 @@ if command -v direnv &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
 # fix ssh-agent forwarding for tmux
 if [[ -n "$SSH_CONNECTION" && -n "$TMUX" ]]; then
   export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
