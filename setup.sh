@@ -37,13 +37,8 @@ if [ ! -d "$TMUX_HOME/plugins/tpm" ]; then
 	git clone https://github.com/tmux-plugins/tpm "$TMUX_HOME/plugins/tpm"
 fi
 
-if [ "$(uname)" = "Linux" ]; then
-	mkdir -p "$HOME/.config/lazygit"
-	ln -fs "${BASEDIR}/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
-else
-	mkdir -p "$HOME/Library/Application Support/lazygit"
-	ln -fs "${BASEDIR}/lazygit/config.yml" "$HOME/Library/Application Support/lazygit/config.yml"
-fi
+mkdir -p "$HOME/.config/lazygit"
+ln -fs "${BASEDIR}/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
 
 # script to handle copying text to the host terminal on remote sessions using
 # the OSC 52 escape sequence.
@@ -65,11 +60,19 @@ if [ "$(uname)" = "Linux" ]; then
 fi
 
 # zsh
-if [ -d "$HOME/.zsh_custom" ]; then
-	rm -rf "$HOME/.zsh_custom"
+if [ -d "$XDG_CONFIG_HOME/zsh" ]; then
+	rm -rf "$XDG_CONFIG_HOME/zsh"
 fi
 
-ln -fs "${BASEDIR}/zsh/zsh_custom" "$HOME/.zsh_custom"
+ln -fs "${BASEDIR}/zsh" "$XDG_CONFIG_HOME/zsh"
+
+if ! [ -d "$XDG_CONFIG_HOME/zsh/plugins" ]; then
+	# install plugins
+	git clone git@github.com:hlissner/zsh-autopair.git "$XDG_CONFIG_HOME/zsh/plugins/zsh-autopair"
+	git clone git@github.com:zsh-users/zsh-autosuggestions.git "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions"
+	git clone git@github.com:zsh-users/zsh-syntax-highlighting.git "$XDG_CONFIG_HOME/zsh/plugins/zsh-syntax-highlighting"
+fi
+
 ln -fs "${BASEDIR}/zsh/zshrc" "$HOME/.zshrc"
 ln -fs "${BASEDIR}/zsh/zshenv" "$HOME/.zshenv"
 ln -fs "${BASEDIR}/zsh/zprofile" "$HOME/.zprofile"
