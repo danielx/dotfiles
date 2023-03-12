@@ -128,9 +128,10 @@ fi
 
 # Customized git status
 ZSH_PROMPT_GIT_STATUS() {
-  local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
+  local git_branch is_dirty
+  git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
   if [[ -n $git_branch ]]; then
-    local is_dirty="$(git status --porcelain --untracked-files=no 2>/dev/null | tail -n 1)"
+    is_dirty="$(git status --porcelain --untracked-files=no 2>/dev/null | tail -n 1)"
     if [[ -n "$is_dirty" ]]; then
       echo "%{$fg[white]%}[$git_branch] %{$fg[red]%}✗"
     else
