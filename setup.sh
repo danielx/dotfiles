@@ -1,78 +1,100 @@
-#!/bin/sh
+#!/bin/bash
 
-BASEDIR=$(
-	cd "$(dirname "$0")" || exit 1
-	pwd
-)
+cd "$(dirname "$0")" || exit 1
 
-# git
-if [ ! -f "$BASEDIR/git/gitconfig.local" ]; then
-	cp "$BASEDIR/git/gitconfig.local-example" "$BASEDIR/git/gitconfig.local"
+### REQUIRED VARS
+if [ -z "$XDG_CONFIG_HOME" ]; then
+	export XDG_CONFIG_HOME="$HOME/.config"
+fi
+if [ -z "$XDG_DATA_HOME" ]; then
+	export XDG_DATA_HOME="$HOME/.local/share"
+fi
+if [ -z "$XDG_CACHE_HOME" ]; then
+	export XDG_CACHE_HOME="$HOME/.cache"
 fi
 
-ln -fs "${BASEDIR}/git/gitconfig" "$HOME/.gitconfig"
-ln -fs "${BASEDIR}/git/gitconfig.local" "$HOME/.gitconfig.local"
-ln -fs "${BASEDIR}/git/gitignore_global" "$HOME/.gitignore_global"
+### HELPERS
 
-# ssh
-ln -fs "${BASEDIR}/ssh/rc" "$HOME/.ssh/rc"
-
-# vim
-ln -fs "${BASEDIR}/vim/vimrc" "$HOME/.vimrc"
-if [ -d "$HOME/.config/nvim" ]; then
-	rm -rf "$HOME/.config/nvim"
-fi
-ln -fs "${BASEDIR}/nvim" "$HOME/.config/nvim"
-
-# tmux
-TMUX_HOME="$HOME/.config/tmux"
-if [ -d "$TMUX_HOME" ]; then
-	rm -rf "$TMUX_HOME"
-fi
-ln -fs "${BASEDIR}/tmux" "$TMUX_HOME"
-ln -fs "${BASEDIR}/scripts/tmux-status-meminfo" "$HOME/.local/bin/tmux-status-meminfo"
-ln -fs "${BASEDIR}/scripts/tmux-status-loadinfo" "$HOME/.local/bin/tmux-status-loadinfo"
-
-if [ ! -d "$TMUX_HOME/plugins/tpm" ]; then
-	git clone https://github.com/tmux-plugins/tpm "$TMUX_HOME/plugins/tpm"
-fi
-
-mkdir -p "$HOME/.config/lazygit"
-ln -fs "${BASEDIR}/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
-
-# script to handle copying text to the host terminal on remote sessions using
-# the OSC 52 escape sequence.
-# supported by iterm2 on macos and rxvt-unicode (requires custom extension).
-if [ "$(uname)" = "Linux" ]; then
-	# only install on linux since iterm2 handles it w/o needing this in tmux
-	mkdir -p "$HOME/.local/bin"
-	ln -fs "${BASEDIR}/scripts/yank" "$HOME/.local/bin/yank"
-fi
-
-# rxvt-unicode on linux since it supports OSC 52
-if [ "$(uname)" = "Linux" ]; then
-	ln -fs "${BASEDIR}/Xresources" "$HOME/.Xresources"
-	if [ -d "$HOME/.urxvt" ]; then
-		rm -rf "$HOME/.urxvt"
+# symlink $source $destination
+function symlink {
+	local source
+	source="$(realpath "$1")"
+	if ! [[ -f "$source" || -d "$source" ]]; then
+		echo "could not find: $source" >&2
+		exit 1
 	fi
 
-	ln -fs "${BASEDIR}/urxvt" "$HOME/.urxvt"
+	if [[ -d "$2" ]]; then
+		# remove destination folder
+		rm -rf "$2"
+	fi
+
+	ln -fs "$source" "$2"
+}
+
+# create a file if not already created
+function seed_file {
+	local source
+	source="$(realpath "$1")"
+	if ! [[ -f "$source" || -d "$source" ]]; then
+		echo "could not find: $source" >&2
+		exit 1
+	fi
+
+	cp -n "$1" "$2"
+}
+
+### SCRIPTS
+mkdir -p "$HOME/.local/bin"
+
+for f in ./scripts/*; do
+	symlink "$(realpath "$f")" "$HOME/.local/bin/$(basename "$f")"
+done
+
+### GIT
+seed_file "./git/gitconfig.local-example" "$(realpath "./git/gitconfig.local")"
+
+symlink "./git/gitconfig" "$HOME/.gitconfig"
+symlink "./git/gitconfig.local" "$HOME/.gitconfig.local"
+symlink "./git/gitignore_global" "$HOME/.gitignore_global"
+
+### SSH
+symlink "./ssh/rc" "$HOME/.ssh/rc"
+
+### VIM
+symlink "./vim/vimrc" "$HOME/.vimrc"
+
+### NEOVIM
+symlink "./nvim" "$XDG_CONFIG_HOME/nvim"
+
+### TMUX
+symlink "./tmux" "$XDG_CONFIG_HOME/tmux"
+
+if ! [ -d "tmux/plugins/tpm" ]; then
+	git clone https://github.com/tmux-plugins/tpm "plugins/tpm"
 fi
 
-# zsh
-if [ -d "$XDG_CONFIG_HOME/zsh" ]; then
-	rm -rf "$XDG_CONFIG_HOME/zsh"
+### LAZYGIT
+symlink "./lazygit" "$XDG_CONFIG_HOME/lazygit"
+
+### RXVT-UNICODE on linux since it supports OSC 52
+if [ "$(uname)" = "Linux" ]; then
+	symlink "./Xresources" "$HOME/.Xresources"
+	symlink "./urxvt" "$HOME/.urxvt"
 fi
 
-ln -fs "${BASEDIR}/zsh" "$XDG_CONFIG_HOME/zsh"
+### ZSH
+mkdir -p "$XDG_DATA_HOME/zsh"
+
+symlink "./zsh" "$XDG_CONFIG_HOME/zsh"
 
 if ! [ -d "$XDG_CONFIG_HOME/zsh/plugins" ]; then
 	# install plugins
-	git clone git@github.com:hlissner/zsh-autopair.git "$XDG_CONFIG_HOME/zsh/plugins/zsh-autopair"
-	git clone git@github.com:zsh-users/zsh-autosuggestions.git "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions"
-	git clone git@github.com:zsh-users/zsh-syntax-highlighting.git "$XDG_CONFIG_HOME/zsh/plugins/zsh-syntax-highlighting"
+	git clone https://github.com/hlissner/zsh-autopair "$XDG_CONFIG_HOME/zsh/plugins/zsh-autopair"
+	git clone https://github.com/zsh-users/zsh-autosuggestions "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions"
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting "$XDG_CONFIG_HOME/zsh/plugins/zsh-syntax-highlighting"
 fi
 
-ln -fs "${BASEDIR}/zsh/zshrc" "$HOME/.zshrc"
-ln -fs "${BASEDIR}/zsh/zshenv" "$HOME/.zshenv"
-ln -fs "${BASEDIR}/zsh/zprofile" "$HOME/.zprofile"
+symlink "./zsh/zshrc" "$HOME/.zshrc"
+symlink "./zsh/zshenv" "$HOME/.zshenv"
+symlink "./zsh/zprofile" "$HOME/.zprofile"

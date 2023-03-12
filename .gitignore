@@ -4,3 +4,4 @@ git/gitconfig.local
 lazy-lock.json
 tmux/plugins
 zsh/plugins
+lazygit/state.yml
