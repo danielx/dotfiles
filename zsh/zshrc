@@ -61,9 +61,10 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include hidden files.
 
-### KEYBINDINGS
-bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line
+# Plugins
+source "$XDG_CONFIG_HOME/zsh/plugins/zsh-autopair/autopair.zsh"
+source "$XDG_CONFIG_HOME/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 ### VI MODE
 bindkey -v
@@ -118,6 +119,23 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 precmd() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+### KEYBINDINGS
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+
+bindkey '^f' autosuggest-accept
+bindkey '^i' expand-or-complete-prefix
+
+### SEARCH
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^p' up-line-or-beginning-search
+bindkey '^n' down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 
 ### PROMPT
 autoload -U colors && colors
@@ -292,20 +310,3 @@ alias ta='tmux attach -t'
 alias tn='tmux new -s $(basename $(pwd))'
 alias t="$XDG_CONFIG_HOME/tmux/plugins/t-smart-tmux-session-manager/bin/t"
 alias tl='tmux list-sessions'
-
-# Plugins
-source "$XDG_CONFIG_HOME/zsh/plugins/zsh-autopair/autopair.zsh"
-source "$XDG_CONFIG_HOME/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-bindkey '^f' autosuggest-accept
-bindkey '^i' expand-or-complete-prefix
-
-### SEARCH
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey '^p' up-line-or-beginning-search
-bindkey '^n' down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search
-bindkey "^[[B" down-line-or-beginning-search
