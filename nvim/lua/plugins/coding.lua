@@ -169,4 +169,13 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 	},
 
+	-- split/join stuff
+	{
+		'echasnovski/mini.splitjoin',
+		event = { 'BufReadPre', 'BufNewFile' },
+		version = false,
+		config = function(_, opts)
+			require('mini.splitjoin').setup(opts)
+		end
+	},
 }
