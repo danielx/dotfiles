@@ -135,6 +135,7 @@ return {
 	-- better text-objects
 	{
 		'echasnovski/mini.ai',
+		version = false,
 		keys = {
 			{ 'a', mode = { 'x', 'o' } },
 			{ 'i', mode = { 'x', 'o' } },
@@ -163,5 +164,9 @@ return {
 	},
 
 	-- indentation (editorconfig etc)
-	{ 'tpope/vim-sleuth' },
+	{
+		'tpope/vim-sleuth',
+		event = { 'BufReadPre', 'BufNewFile' },
+	},
+
 }
