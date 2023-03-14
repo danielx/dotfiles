@@ -85,28 +85,20 @@ return {
 			-- Populate the keys based on the user's options
 			local mappings = {
 				{
-					'gza',
+					'gsa',
 					desc = 'Add surrounding',
 					mode = { 'v' },
 				},
-				{ 'gzd', desc = 'Delete surrounding' },
-				{ 'gzf', desc = 'Find right surrounding' },
-				{ 'gzF', desc = 'Find left surrounding' },
-				{ 'gzH', desc = 'Highlight surrounding' },
-				{ 'gzr', desc = 'Replace surrounding' },
-				{ 'gzn', desc = 'Update `MiniSurround.config.n_lines`' },
+				{ 'gsd', desc = 'Delete surrounding' },
+				{ 'gsr', desc = 'Replace surrounding' },
 			}
 			return vim.list_extend(mappings, keys)
 		end,
 		opts = {
 			mappings = {
-				add = 'gza', -- Add surrounding in Normal and Visual modes
-				delete = 'gzd', -- Delete surrounding
-				find = 'gzf', -- Find surrounding (to the right)
-				find_left = 'gzF', -- Find surrounding (to the left)
-				highlight = 'gzh', -- Highlight surrounding
-				replace = 'gzr', -- Replace surrounding
-				update_n_lines = 'gzn', -- Update `n_lines`
+				add = 'gsa', -- Add surrounding in Normal and Visual modes
+				delete = 'gsd', -- Delete surrounding
+				replace = 'gsr', -- Replace surrounding
 			},
 		},
 		config = function(_, opts)
