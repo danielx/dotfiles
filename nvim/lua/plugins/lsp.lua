@@ -11,7 +11,7 @@ local servers = {
 	vuels = {}, -- Vue 2 (volar for vue3)
 	jsonls = {},
 	dockerls = {},
-	lua_language_server = {
+	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
 			telemetry = { enable = false },
