@@ -164,6 +164,23 @@ PROMPT='%{$fg[cyan]%}[$ZSH_PROMPT_HOST%{$fg[cyan]%}%~%{$fg[cyan]%}]$(ZSH_PROMPT_
 
 ### FZF
 
+export FZF_DEFAULT_OPTS="--reverse \
+  --border rounded \
+  --no-info \
+  --pointer='' \
+  --marker=' ' \
+  --ansi \
+  --color='16,bg+:-1,gutter:-1,prompt:4,pointer:5,marker:6'"
+
+export FZF_CTRL_R_OPTS="--border-label=' history ' --prompt='  '"
+
+export FZF_CTRL_T_OPTS="--border-label=' files ' --prompt='󰮗  '"
+
+__fzfcmd() {
+  [ -n "${TMUX_PANE-}" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "${FZF_TMUX_OPTS-}" ]; } &&
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf"
+}
+
 # CTRL-T - Paste the selected file path(s) into the command line
 __fsel() {
   setopt localoptions pipefail no_aliases 2> /dev/null
@@ -173,16 +190,12 @@ __fsel() {
     --follow \
     --exclude .git \
     --exclude node_modules \
-    | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --border --bind=ctrl-z:ignore ${FZF_DEFAULT_OPTS-} ${FZF_CTRL_T_OPTS-}" $(__fzfcmd) -m "$@" | while read item; do
+    | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --bind=ctrl-z:ignore ${FZF_DEFAULT_OPTS-} ${FZF_CTRL_T_OPTS-}" $(__fzfcmd) -m "$@" | while read item; do
     echo -n "${(q)item} "
   done
   local ret=$?
   echo
   return $ret
-}
-__fzfcmd() {
-  [ -n "${TMUX_PANE-}" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "${FZF_TMUX_OPTS-}" ]; } &&
-    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf"
 }
 
 fzf-file-widget() {
@@ -191,6 +204,7 @@ fzf-file-widget() {
   zle reset-prompt
   return $ret
 }
+
 zle     -N            fzf-file-widget
 bindkey -M vicmd '^T' fzf-file-widget
 bindkey -M viins '^T' fzf-file-widget
@@ -199,8 +213,8 @@ bindkey -M viins '^T' fzf-file-widget
 fzf-history-widget() {
   local selected num
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  selected=( $(fc -rl 1 | awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' |
-    FZF_DEFAULT_OPTS="--height 40% --reverse -n2..,.. --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+  selected=( $(fc -nrl 1 | awk '{ cmd=$0; if (!seen[cmd]++) print $0 }' |
+    FZF_DEFAULT_OPTS="-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore --query=${(qqq)LBUFFER} +m ${FZF_DEFAULT_OPTS-} ${FZF_CTRL_R_OPTS-}" $(__fzfcmd)) )
   local ret=$?
   if [ -n "$selected" ]; then
     num=$selected[1]
@@ -211,6 +225,7 @@ fzf-history-widget() {
   zle reset-prompt
   return $ret
 }
+
 zle     -N            fzf-history-widget
 bindkey -M vicmd '^R' fzf-history-widget
 bindkey -M viins '^R' fzf-history-widget
