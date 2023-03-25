@@ -17,10 +17,36 @@ return {
                         prompt_position = "top",
                     },
                 },
+                vimgrep_arguments = {
+                    "rg",
+                    "--color=never",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                    "--smart-case",
+                    "--trim",
+                    "--hidden",
+                    "--glob",
+                    "!**/.git/*",
+                },
             },
             extensions = {
                 file_browser = {
                     hijack_netrw = true
+                },
+            },
+            pickers = {
+                find_files = {
+                    find_command = {
+                        "fd",
+                        "--type",
+                        "file",
+                        "--strip-cwd-prefix",
+                        "--hidden",
+                        "--exclude",
+                        "**/.git/*",
+                    },
                 },
             },
         },
