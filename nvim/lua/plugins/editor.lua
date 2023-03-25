@@ -9,6 +9,15 @@ return {
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         },
         opts = {
+            defaults = {
+                results_title = false,
+                sorting_strategy = "ascending",
+                layout_config = {
+                    horizontal = {
+                        prompt_position = "top",
+                    },
+                },
+            },
             extensions = {
                 file_browser = {
                     hijack_netrw = true
@@ -149,12 +158,12 @@ return {
             local wk = require('which-key')
             wk.setup(opts)
             wk.register({
-                    ['<leader>s'] = { name = '+search' },
-                    ['<leader>l'] = { name = '+lsp' },
-                    ['<leader>c'] = { name = '+lsp' },
-                    ['<leader>w'] = { name = '+workspace' },
-                    ['<leader>x'] = { name = '+trouble' },
-                    ['<leader>g'] = { name = '+git' },
+                ['<leader>s'] = { name = '+search' },
+                ['<leader>l'] = { name = '+lsp' },
+                ['<leader>c'] = { name = '+lsp' },
+                ['<leader>w'] = { name = '+workspace' },
+                ['<leader>x'] = { name = '+trouble' },
+                ['<leader>g'] = { name = '+git' },
             })
         end
     },
