@@ -77,11 +77,8 @@ fi
 ### LAZYGIT
 symlink "./lazygit" "$XDG_CONFIG_HOME/lazygit"
 
-### RXVT-UNICODE on linux since it supports OSC 52
-if [ "$(uname)" = "Linux" ]; then
-	symlink "./Xresources" "$HOME/.Xresources"
-	symlink "./urxvt" "$HOME/.urxvt"
-fi
+### ALACRITTY
+symlink "./alacritty" "$XDG_CONFIG_HOME/alacritty"
 
 ### ZSH
 mkdir -p "$XDG_DATA_HOME/zsh"
