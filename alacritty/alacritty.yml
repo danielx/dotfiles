@@ -7,7 +7,6 @@ font:
   size: 14.0
   normal:
     family: "BlexMono Nerd Font"
-    style: Book
 
 window:
   option_as_alt: OnlyLeft
