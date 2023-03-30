@@ -46,7 +46,20 @@ return {
 				disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
 			},
 			sections = {
-				lualine_b = { 'diff', 'diagnostics' },
+				lualine_b = {
+					{
+						'diff',
+						diff_color = {
+							modified = { fg = "#E49B5D" },
+						},
+						symbols = {
+							modified = ' ',
+							added = ' ',
+							removed = ' '
+						},
+					},
+					'diagnostics',
+				},
 				lualine_c = {
 					{
 						'filename',
@@ -63,8 +76,7 @@ return {
 				lualine_x = {},
 			},
 			inactive_sections = {
-				lualine_b = { 'diff' },
-				lualine_c = {
+				lualine_b = {
 					{
 						'filename',
 						path = 1,
@@ -77,6 +89,8 @@ return {
 						cond = require("grapple").exists
 					}
 				},
+				lualine_c = {},
+				lualine_x = {},
 			},
 		},
 	},
