@@ -13,8 +13,8 @@ yabai -m config \
 	window_animation_frame_rate 120 \
 	window_opacity off \
 	insert_feedback_color 0xffd75f5f \
-	active_window_border_color 0x90E49B5D \
-	normal_window_border_color 0x30E49B5D \
+	active_window_border_color 0x60E49B5D \
+	normal_window_border_color 0x00E49B5D \
 	window_border_width 1 \
 	window_border_radius 10 \
 	window_border_blur off \
