@@ -1,0 +1,45 @@
+# focus window
+cmd - h : yabai -m window --focus west
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
+
+# swap managed window
+shift + cmd - h : yabai -m window --swap west
+shift + cmd - j : yabai -m window --swap south
+shift + cmd - k : yabai -m window --swap north
+shift + cmd - l : yabai -m window --swap east
+
+# balance size of windows
+shift + cmd - 0x18 : yabai -m space --balance
+
+# send window to space
+shift + cmd - 1 : yabai -m window --space 1
+shift + cmd - 2 : yabai -m window --space 2
+shift + cmd - 3 : yabai -m window --space 3
+shift + cmd - 4 : yabai -m window --space 4
+shift + cmd - 5 : yabai -m window --space 5
+shift + cmd - 6 : yabai -m window --space 6
+
+# focus displays
+ralt - 1 : yabai -m display --focus 1
+ralt - 2 : yabai -m display --focus 2
+
+# send window to display and focus
+shift + ralt - 1 : yabai -m window --display 1; yabai -m display --focus 2
+shift + ralt - 2 : yabai -m window --display 2; yabai -m display --focus 2
+
+# increase window size
+shift + cmd - left  : yabai -m window --resize left:-20:0
+shift + cmd - up    : yabai -m window --resize top:0:-20
+shift + cmd - down  : yabai -m window --resize bottom:0:20
+shift + cmd - right : yabai -m window --resize right:20:0
+
+# decrease window size
+shift + alt - left  : yabai -m window --resize right:-20:0
+shift + alt - up    : yabai -m window --resize bottom:0:-20
+shift + alt - down  : yabai -m window --resize top:0:20
+shift + alt - right : yabai -m window --resize left:20:0
+
+# toggle window zoom
+shift + cmd - f : yabai -m window --toggle zoom-fullscreen

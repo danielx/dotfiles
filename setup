@@ -95,3 +95,11 @@ fi
 symlink "./zsh/zshrc" "$HOME/.zshrc"
 symlink "./zsh/zshenv" "$HOME/.zshenv"
 symlink "./zsh/zprofile" "$HOME/.zprofile"
+
+if [ "$(uname)" = "Darwin" ]; then
+	### YABAI
+	symlink "./yabai" "$XDG_CONFIG_HOME/yabai"
+
+	### SKHD
+	symlink "./skhd" "$XDG_CONFIG_HOME/skhd"
+fi
