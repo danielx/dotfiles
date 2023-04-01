@@ -1,3 +1,7 @@
+# ===============
+# ==== YABAI ====
+# ===============
+
 # focus window
 cmd - h : yabai -m window --focus west
 cmd - j : yabai -m window --focus south
@@ -43,3 +47,8 @@ shift + alt - right : yabai -m window --resize left:20:0
 
 # toggle window zoom
 shift + cmd - f : yabai -m window --toggle zoom-fullscreen
+
+# ===================
+# ==== LAUNCHERS ====
+# ===================
+cmd - d : $HOME/.local/bin/macpopup $HOME/.local/bin/maclauncher

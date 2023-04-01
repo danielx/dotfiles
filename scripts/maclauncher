@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+FZF_OPTS="--reverse \
+  --border none \
+  --no-info \
+  --prompt='  ' \
+  --pointer='' \
+  --marker=' ' \
+  --ansi \
+  --color='16,bg+:-1,gutter:-1,prompt:4,pointer:5,marker:6'"
+
+fd --glob "*.app" \
+    /Applications \
+    /System/Applications \
+    /System/Applications/Utilities \
+    /System/Library/CoreServices \
+    --type d \
+    --max-depth 1 \
+    -X basename \
+    | sed -e "s/\.app$//g" \
+    | FZF_DEFAULT_OPTS="$FZF_OPTS" fzf \
+    | xargs -I {} open -n -a {}
