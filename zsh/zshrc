@@ -213,7 +213,7 @@ bindkey -M viins '^T' fzf-file-widget
 fzf-history-widget() {
   local selected num
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  selected=( $(fc -nrl 1 | awk '{ cmd=$0; if (!seen[cmd]++) print $0 }' |
+  selected=( $(fc -rl 0 | awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' |
     FZF_DEFAULT_OPTS="-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore --query=${(qqq)LBUFFER} +m ${FZF_DEFAULT_OPTS-} ${FZF_CTRL_R_OPTS-}" $(__fzfcmd)) )
   local ret=$?
   if [ -n "$selected" ]; then
