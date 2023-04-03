@@ -52,3 +52,5 @@ shift + cmd - f : yabai -m window --toggle zoom-fullscreen
 # ==== LAUNCHERS ====
 # ===================
 cmd - d : $HOME/.local/bin/macpopup $HOME/.local/bin/maclauncher
+
+cmd - return : open -n -a Alacritty
