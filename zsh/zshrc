@@ -174,7 +174,7 @@ export FZF_DEFAULT_OPTS="--reverse \
 
 export FZF_CTRL_R_OPTS="--border-label=' history ' --prompt='  '"
 
-export FZF_CTRL_T_OPTS="--border-label=' files ' --prompt='󰮗  '"
+export FZF_CTRL_T_OPTS="--border-label=' files ' --prompt='  '"
 
 __fzfcmd() {
   [ -n "${TMUX_PANE-}" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "${FZF_TMUX_OPTS-}" ]; } &&
