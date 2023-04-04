@@ -9,7 +9,7 @@ TERM_LINES=24
 X=$((SCREEN_WIDTH / 2))
 Y=$((SCREEN_HEIGHT / 2))
 
-alacritty -t "macpopup" \
+open -n -a Alacritty --args -t "macpopup" \
 	-o window.position.x="${X}" \
 	-o window.position.y="${Y}" \
 	-o window.dimensions.columns="${TERM_COLUMNS}" \
