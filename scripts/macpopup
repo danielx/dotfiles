@@ -1,9 +1,4 @@
 #!/usr/bin/env sh
 
-TERM_COLUMNS=80
-TERM_LINES=24
-
 open -n -a Alacritty --args -t "macpopup" \
-	-o window.dimensions.columns="${TERM_COLUMNS}" \
-	-o window.dimensions.lines="${TERM_LINES}" \
 	-e "$1"
