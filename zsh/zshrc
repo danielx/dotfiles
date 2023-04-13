@@ -170,7 +170,7 @@ export FZF_DEFAULT_OPTS="--reverse \
   --pointer='' \
   --marker=' ' \
   --ansi \
-  --color='16,bg+:-1,gutter:-1,prompt:4,pointer:5,marker:6'"
+  --color='16,bg+:-1,gutter:-1,prompt:4,pointer:5,marker:6,border:7'"
 
 export FZF_CTRL_R_OPTS="--border-label=' history ' --prompt='  '"
 
