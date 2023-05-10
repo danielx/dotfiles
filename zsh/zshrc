@@ -23,6 +23,10 @@ if [ -d "/usr/local/go/bin" ]; then
   PATH="/usr/local/go/bin:$HOME/go/bin:$PATH"
 fi
 
+if [ -d "/usr/local/opt/openjdk/bin" ]; then
+  PATH="/usr/local/opt/openjdk/bin:$PATH"
+fi
+
 # place python `pip install --user` scripts in ~/.local/bin
 export PYTHONUSERBASE="$HOME/.local"
 
