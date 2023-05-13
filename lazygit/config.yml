@@ -3,11 +3,11 @@ gui:
   showIcons: true
   theme:
     selectedLineBgColor:
-      - black
+      - "#253333"
     selectedRangeBgColor:
-      - black
+      - "#253333"
     cherryPickedCommitFgColor:
-      - black
+      - "#253333"
 keybinding:
   commits:
     moveDownCommit: "<c-n>"
