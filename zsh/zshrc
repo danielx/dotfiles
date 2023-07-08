@@ -19,7 +19,7 @@ if [ -d "/opt/homebrew/bin" ]; then
   PATH="/opt/homebrew/bin:$PATH"
 fi
 
-if [ -d "/usr/local/go/bin" ]; then
+if command -v go &>/dev/null; then
   PATH="/usr/local/go/bin:$HOME/go/bin:$PATH"
 fi
 
