@@ -7,6 +7,10 @@ font:
   size: 14.0
   normal:
     family: "BlexMono Nerd Font"
+    Style: Regular
+  bold:
+    family: "BlexMono Nerd Font"
+    style: SemiBold
 
 window:
   option_as_alt: OnlyLeft
