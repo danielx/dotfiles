@@ -16,6 +16,7 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 if [ -d "/opt/homebrew/bin" ]; then
+  export HOMEBREW_NO_ANALYTICS=1
   PATH="/opt/homebrew/bin:$PATH"
 fi
 
