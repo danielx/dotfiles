@@ -4,10 +4,13 @@ gui:
   theme:
     selectedLineBgColor:
       - "#253333"
+      - bold
     selectedRangeBgColor:
       - "#253333"
+      - bold
     cherryPickedCommitFgColor:
       - "#253333"
+      - bold
 keybinding:
   commits:
     moveDownCommit: "<c-n>"
