@@ -1,4 +1,11 @@
 return {
+	-- display context when its out of view (above scroll)
+	{
+		'nvim-treesitter/nvim-treesitter-context',
+		event = { 'BufReadPre', 'BufNewFile' },
+		config = true,
+	},
+
 	-- [[ Configure Treesitter ]]
 	-- See `:help nvim-treesitter`
 	{
