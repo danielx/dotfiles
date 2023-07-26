@@ -1,6 +1,6 @@
 gui:
   scrollHeight: 14 # about 1/2 page
-  showIcons: true
+  nerdFontsVersion: "3"
   theme:
     selectedLineBgColor:
       - "#253333"
