@@ -98,7 +98,7 @@ return {
 	-- display lsp status in statusline
 	{
 		'j-hui/fidget.nvim',
-		event = 'VeryLazy',
+		event = 'LspAttach',
 		config = function()
 			require('fidget').setup({})
 		end,
