@@ -38,3 +38,4 @@ yabai -m config \
 yabai -m rule --add title="^macpopup$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Calculator$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Books$" sticky=on layer=above manage=off
