@@ -10,3 +10,5 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+[remote "origin"]
+	prune = true
