@@ -31,15 +31,14 @@ return {
 			indent = {
 				char = "│",
 				tab_char = "│",
-				smart_indent_cap = true,
+				smart_indent_cap = false,
 				priority = 2,
 			},
 			whitespace = {
 				remove_blankline_trail = true,
 			},
 			scope = {
-				enabled = true,
-				char = "│",
+				enabled = false,
 			},
 			exclude = {
 				filetypes = {
