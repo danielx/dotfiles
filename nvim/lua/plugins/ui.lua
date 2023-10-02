@@ -24,12 +24,42 @@ return {
 	-- show indentation guides
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
-			char = "│",
-			filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
-			show_trailing_blankline_indent = false,
-			show_current_context = false,
+			enabled = true,
+			indent = {
+				char = "│",
+				tab_char = "│",
+				smart_indent_cap = true,
+				priority = 2,
+			},
+			whitespace = {
+				remove_blankline_trail = true,
+			},
+			scope = {
+				enabled = true,
+				char = "│",
+			},
+			exclude = {
+				filetypes = {
+					'help',
+					'alpha',
+					'dashboard',
+					'neo-tree',
+					'Trouble',
+					'lazy',
+					'lspinfo',
+					'packer',
+					'startify',
+					'checkhealth',
+					'man',
+					'gitcommit',
+					'TelescopePrompt',
+					'TelescopeResults',
+					''
+				},
+			},
 		},
 	},
 
