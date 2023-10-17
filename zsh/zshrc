@@ -20,8 +20,12 @@ if [ -d "/opt/homebrew/bin" ]; then
   PATH="/opt/homebrew/bin:$PATH"
 fi
 
+if [ -d "/usr/local/go/bin" ]; then
+  PATH="/usr/local/go/bin:$PATH"
+fi
+
 if command -v go &>/dev/null; then
-  PATH="/usr/local/go/bin:$HOME/go/bin:$PATH"
+  PATH="$HOME/go/bin:$PATH"
 fi
 
 if [ -d "/usr/local/opt/openjdk/bin" ]; then
