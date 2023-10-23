@@ -193,5 +193,8 @@ return {
 		end,
 		event = { "CmdlineEnter" },
 		ft = { "go", 'gomod' },
+		keys = {
+			{ "<leader>lge", "<cmd>GoIfErr<cr>", desc = "[L]anguage [G]o Fill [E]rror" },
+		},
 	}
 }
