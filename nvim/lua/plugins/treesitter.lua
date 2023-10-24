@@ -22,7 +22,6 @@ return {
 				'javascript',
 				'typescript',
 				'tsx',
-				'help',
 				'markdown',
 				'markdown_inline',
 				'query',
