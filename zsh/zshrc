@@ -268,8 +268,8 @@ if [ -f "/usr/bin/terraform" ]; then
 fi
 
 # Node Version Manager
-if [ -s "$HOME/.nvm/nvm.sh" ]; then
-  export NVM_DIR="$HOME/.nvm"
+if [ -s "$XDG_CONFIG_HOME/nvm/nvm.sh" ]; then
+  export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 
   function () {
     local nvm_default_alias nvm_default_path
