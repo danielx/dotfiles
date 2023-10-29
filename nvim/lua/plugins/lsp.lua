@@ -98,11 +98,11 @@ return {
 
 				-- Create a command `:Format` local to the LSP buffer
 				vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-					vim.lsp.buf.format()
+					require("conform").format({ bufnr = bufnr })
 				end, { desc = 'Format current buffer with LSP' })
 			end
 
-			vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = '[F]ormat' })
+			vim.keymap.set('n', '<leader>f', require("conform").format, { desc = '[F]ormat' })
 			-- setup neovim/nvim-lspconfig
 			mason_lspconfig.setup_handlers {
 				function(server_name)
@@ -116,37 +116,18 @@ return {
 		end,
 	},
 
-	-- null-ls
 	{
-		'jose-elias-alvarez/null-ls.nvim',
+		'stevearc/conform.nvim',
 		event = { 'BufReadPre', 'BufNewFile' },
-		config = function()
-			local nls = require('null-ls')
-
-			-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-			local formatting = nls.builtins.formatting
-			-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-			local diagnostics = nls.builtins.diagnostics
-			-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/code_actions
-			local code_actions = nls.builtins.code_actions
-
-			nls.setup({
-				sources = {
-					-- Python
-					formatting.black,
-					formatting.isort,
-					diagnostics.flake8,
-					-- Golang
-					formatting.goimports,
-					-- JS/TS
-					formatting.prettier,
-					code_actions.eslint,
-					-- Shell
-					formatting.shfmt,
-					diagnostics.shellcheck,
-					diagnostics.zsh,
-				},
-			})
-		end,
+		opts = {
+			formatters_by_ft = {
+				lua = { 'stylua' },
+				python = { 'isort', 'black' },
+				javascript = { { 'prettierd', 'prettier' } },
+				go = { 'goimports' },
+				sh = { 'shfmt' },
+				sql = { 'sql_formatter' },
+			},
+		},
 	},
 }
