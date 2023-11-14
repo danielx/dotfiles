@@ -18,7 +18,7 @@ return {
 	},
 
 	{
-		'xiyaowong/nvim-transparent',
+		"xiyaowong/nvim-transparent",
 	},
 
 	-- show indentation guides
@@ -42,21 +42,21 @@ return {
 			},
 			exclude = {
 				filetypes = {
-					'help',
-					'alpha',
-					'dashboard',
-					'neo-tree',
-					'Trouble',
-					'lazy',
-					'lspinfo',
-					'packer',
-					'startify',
-					'checkhealth',
-					'man',
-					'gitcommit',
-					'TelescopePrompt',
-					'TelescopeResults',
-					''
+					"help",
+					"alpha",
+					"dashboard",
+					"neo-tree",
+					"Trouble",
+					"lazy",
+					"lspinfo",
+					"packer",
+					"startify",
+					"checkhealth",
+					"man",
+					"gitcommit",
+					"TelescopePrompt",
+					"TelescopeResults",
+					"",
 				},
 			},
 		},
@@ -64,34 +64,34 @@ return {
 
 	-- lualine
 	{
-		'nvim-lualine/lualine.nvim',
-		event = 'VeryLazy',
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
 		opts = {
 			options = {
 				icons_enabled = false,
-				theme = 'auto',
-				component_separators = '|',
-				section_separators = '',
+				theme = "auto",
+				component_separators = "|",
+				section_separators = "",
 				disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
 			},
 			sections = {
 				lualine_b = {
 					{
-						'diff',
+						"diff",
 						diff_color = {
 							modified = { fg = "#E49B5D" },
 						},
 						symbols = {
-							modified = ' ',
-							added = ' ',
-							removed = ' '
+							modified = " ",
+							added = " ",
+							removed = " ",
 						},
 					},
-					'diagnostics',
+					"diagnostics",
 				},
 				lualine_c = {
 					{
-						'filename',
+						"filename",
 						path = 1,
 					},
 					{
@@ -99,15 +99,15 @@ return {
 							local key = require("grapple").key()
 							return "[" .. key .. "]"
 						end,
-						cond = require("grapple").exists
-					}
+						cond = require("grapple").exists,
+					},
 				},
 				lualine_x = {},
 			},
 			inactive_sections = {
 				lualine_b = {
 					{
-						'filename',
+						"filename",
 						path = 1,
 					},
 					{
@@ -115,8 +115,8 @@ return {
 							local key = require("grapple").key()
 							return "[" .. key .. "]"
 						end,
-						cond = require("grapple").exists
-					}
+						cond = require("grapple").exists,
+					},
 				},
 				lualine_c = {},
 				lualine_x = {},
@@ -126,10 +126,10 @@ return {
 
 	-- display lsp status in statusline
 	{
-		'j-hui/fidget.nvim',
-		event = 'LspAttach',
+		"j-hui/fidget.nvim",
+		event = "LspAttach",
 		config = function()
-			require('fidget').setup({})
+			require("fidget").setup({})
 		end,
 	},
 

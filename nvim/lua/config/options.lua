@@ -28,12 +28,12 @@ vim.opt.sidescrolloff = 8
 
 -- Display newlines + trailing spaces
 vim.opt.list = true
-vim.opt.listchars:append 'eol:¬'
-vim.opt.listchars:append 'trail:·'
-vim.opt.listchars:append "tab:→ "
+vim.opt.listchars:append("eol:¬")
+vim.opt.listchars:append("trail:·")
+vim.opt.listchars:append("tab:→ ")
 
 -- Enable mouse mode
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- disable wrap
 vim.opt.wrap = true
@@ -59,14 +59,14 @@ vim.opt.smartcase = true
 -- Decrease update time
 vim.opt.updatetime = 250
 
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
 -- Set colorscheme
 vim.opt.termguicolors = true
-vim.cmd [[colorscheme melange]]
+vim.cmd([[colorscheme melange]])
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menu,menuone,noselect'
+vim.opt.completeopt = "menu,menuone,noselect"
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et

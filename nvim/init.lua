@@ -1,6 +1,6 @@
-require('config.keymaps')
+require("config.keymaps")
 
-require('config.lazy')
+require("config.lazy")
 
-require('config.options')
-require('config.autocmd')
+require("config.options")
+require("config.autocmd")
