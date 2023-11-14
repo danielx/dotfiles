@@ -298,4 +298,17 @@ return {
 			},
 		},
 	},
+
+	-- get github links and/or open in browser directly
+	{
+		"linrongbin16/gitlinker.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			callbacks = {
+				["github.com"] = function()
+					return require("gitlinker.hosts").get_github_type_url
+				end,
+			},
+		},
+	},
 }
