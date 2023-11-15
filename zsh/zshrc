@@ -335,3 +335,8 @@ alias ta='tmux attach -t'
 alias tn='tmux new -s $(basename $(pwd))'
 alias t="$XDG_CONFIG_HOME/tmux/plugins/t-smart-tmux-session-manager/bin/t"
 alias tl='tmux list-sessions'
+
+# golang
+alias gtm='golang-fzf-test-module'
+alias gts='golang-fzf-test-suite'
+alias gcl='golangci-lint run'
