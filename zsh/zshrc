@@ -340,3 +340,7 @@ alias tl='tmux list-sessions'
 alias gtm='golang-fzf-test-module'
 alias gts='golang-fzf-test-suite'
 alias gcl='golangci-lint run'
+
+# docker
+alias dsp='docker stop $(docker ps -q)'
+alias drm='docker rm $(docker ps -qa)'
