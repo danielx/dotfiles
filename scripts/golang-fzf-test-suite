@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Select a test suite to run
+
+rg \
+	--no-heading \
+	--only-matching \
+	--no-line-number \
+	-tgo \
+	'^func (Test\w*Suite\w*)\(' \
+	--replace '$1' |
+	awk '{
+		# split on colon
+		split($0, a, ":")
+
+		# get the dirname from the file path
+		sub(/\/[^\/]+$/, "", a[1])
+
+		printf "%s:%s\n", a[1], a[2]
+	}' |
+	fzf --border-label="╢ Select which test suite to run ╟" |
+	awk '{
+		# split on colon
+		split($0, a, ":")
+
+		# run the specific test suite in module
+		printf "-run \"%s\" ./%s", a[2], a[1]
+	}' |
+	xargs -o \
+		go test -race -count=1 -json |
+	tparse -pass -progress -smallscreen

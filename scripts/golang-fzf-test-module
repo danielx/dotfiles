@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Select a module to test
+
+fd \
+	--type file \
+	'_test.go' \
+	--exec dirname {} |
+	fzf --border-label="╢ Select which module to test ╟" |
+	xargs -o \
+		go test -race -count=1 -json |
+	tparse -pass -progress -smallscreen
