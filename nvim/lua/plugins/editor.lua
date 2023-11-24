@@ -310,5 +310,19 @@ return {
 				end,
 			},
 		},
+		keys = {
+			{
+				"<leader>gl",
+				"<cmd>GitLink<cr>",
+				desc = "Copy git permlink to clipboard",
+				mode = { "n", "v" },
+			},
+			{
+				"<leader>gL",
+				"<cmd>GitLink!<cr>",
+				desc = "Open git permlink in browser",
+				mode = { "n", "v" },
+			},
+		},
 	},
 }
