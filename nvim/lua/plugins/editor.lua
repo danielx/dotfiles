@@ -303,13 +303,15 @@ return {
 	{
 		"linrongbin16/gitlinker.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		opts = {
-			callbacks = {
-				["github.com"] = function()
-					return require("gitlinker.hosts").get_github_type_url
-				end,
-			},
-		},
+		config = function()
+			require('gitlinker').setup({
+				router = {
+					browse = {
+						["^github%..*"] = require('gitlinker.routers').github_browse,
+					},
+				},
+			})
+		end,
 		keys = {
 			{
 				"<leader>gl",
