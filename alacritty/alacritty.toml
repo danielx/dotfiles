@@ -8,7 +8,7 @@ size = 14
 
 [font.normal]
 family = "BlexMono Nerd Font"
-Style = "Regular"
+style = "Regular"
 
 [font.bold]
 family = "BlexMono Nerd Font"
