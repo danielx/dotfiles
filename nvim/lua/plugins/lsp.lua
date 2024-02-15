@@ -1,6 +1,5 @@
 -- Enable the following language servers
 local servers = {
-	clangd = {},
 	bashls = {},
 	gopls = {},
 	pyright = {},
