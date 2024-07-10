@@ -30,8 +30,8 @@ return {
 				config = true,
 			},
 			{
-				"folke/neodev.nvim",
-				opts = { experimental = { pathStrict = true } },
+				"folke/lazydev.nvim",
+				ft = "lua", -- only load on lua files
 			},
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
