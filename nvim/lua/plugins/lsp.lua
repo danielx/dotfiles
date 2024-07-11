@@ -3,7 +3,22 @@ local servers = {
 	bashls = {},
 	gopls = {},
 	pyright = {},
-	tsserver = {},
+	tsserver = {
+		init_options = {
+			plugins = {
+				{
+					name = "@vue/typescript-plugin",
+					location = "/Users/daniel/.config/nvm/versions/node/v22.3.0/lib/node_modules/@vue/typescript-plugin",
+					languages = { "javascript", "typescript", "vue" },
+				},
+			},
+		},
+		filetypes = {
+			"javascript",
+			"typescript",
+			"vue",
+		},
+	},
 	eslint = {},
 	cssls = {},
 	html = {},
@@ -11,9 +26,11 @@ local servers = {
 	jsonls = {},
 	dockerls = {},
 	lua_ls = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
+		settings = {
+			Lua = {
+				workspace = { checkThirdParty = false },
+				telemetry = { enable = false },
+			},
 		},
 	},
 }
@@ -109,11 +126,10 @@ return {
 			-- setup neovim/nvim-lspconfig
 			mason_lspconfig.setup_handlers({
 				function(server_name)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-						on_attach = on_attach,
-						settings = servers[server_name],
-					})
+					local server = servers[server_name] or {}
+					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+					server.on_attach = on_attach
+					require("lspconfig")[server_name].setup(server)
 				end,
 			})
 		end,
