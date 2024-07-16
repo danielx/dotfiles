@@ -1,7 +1,13 @@
 -- Enable the following language servers
 local servers = {
 	bashls = {},
-	gopls = {},
+	gopls = {
+		settings = {
+			gopls = {
+				buildFlags = { "-tags=integration" },
+			},
+		},
+	},
 	pyright = {},
 	tsserver = {
 		init_options = {
