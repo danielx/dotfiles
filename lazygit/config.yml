@@ -1,3 +1,6 @@
+git:
+  paging:
+    externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off
 gui:
   scrollHeight: 14 # about 1/2 page
   nerdFontsVersion: "3"
