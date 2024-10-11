@@ -291,7 +291,7 @@ if [ -s "$XDG_CONFIG_HOME/nvm/nvm.sh" ]; then
       echo "slow loading nvm"
       \. "$NVM_DIR/nvm.sh"
     elif; then
-      export PATH="$PATH:$nvm_default_path"
+      export PATH="$nvm_default_path:$PATH"
 
       # lazy load nvm
       nvm() {
