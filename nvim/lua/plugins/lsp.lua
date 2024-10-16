@@ -9,7 +9,7 @@ local servers = {
 		},
 	},
 	pyright = {},
-	tsserver = {
+	ts_ls = {
 		init_options = {
 			plugins = {
 				{
