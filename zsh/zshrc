@@ -30,6 +30,8 @@ fi
 
 if [ -d "/usr/local/opt/openjdk/bin" ]; then
   PATH="/usr/local/opt/openjdk/bin:$PATH"
+elif [ -d "/opt/homebrew/opt/openjdk/bin" ]; then
+  PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
 
 # place python `pip install --user` scripts in ~/.local/bin
