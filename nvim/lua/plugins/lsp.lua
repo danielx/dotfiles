@@ -128,7 +128,8 @@ return {
 				end, { desc = "Format current buffer with LSP" })
 			end
 
-			vim.keymap.set("n", "<leader>f", require("conform").format, { desc = "[F]ormat" })
+			vim.keymap.set("n", "<leader>f", ":Format<cr>", { desc = "[F]ormat", silent = true })
+
 			-- setup neovim/nvim-lspconfig
 			mason_lspconfig.setup_handlers({
 				function(server_name)
