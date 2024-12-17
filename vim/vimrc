@@ -1,9 +1,24 @@
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 syntax on
 set number
 
 set ruler
+set relativenumber
 
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set smartindent
 
+set scrolloff=8
+set sidescrolloff=8
+
+set wrap
+set breakindent
+
+set incsearch
+set ignorecase
+set smartcase
