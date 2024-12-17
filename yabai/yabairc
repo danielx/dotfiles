@@ -40,3 +40,4 @@ yabai -m rule --add app="^System Settings$" sticky=on manage=off
 yabai -m rule --add app="^Calculator$" sticky=on manage=off
 yabai -m rule --add app="^Books$" sticky=on manage=off
 yabai -m rule --add app="^Kindle$" sticky=on manage=off
+yabai -m rule --add app="^IntelliJ" manage=off
