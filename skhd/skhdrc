@@ -48,6 +48,9 @@ shift + alt - right : yabai -m window --resize left:20:0
 # toggle window zoom
 shift + cmd - f : yabai -m window --toggle zoom-fullscreen
 
+# toggle window float
+cmd - m : yabai -m window --toggle float
+
 # ===================
 # ==== LAUNCHERS ====
 # ===================
