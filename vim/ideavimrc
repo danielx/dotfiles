@@ -1,0 +1,38 @@
+source ~/.vimrc
+
+set highlightedyank
+set which-key
+
+set colorcolumn=80
+
+" general editor actions
+nmap <A-i> <Action>(ActivateTerminalToolWindow)
+nmap <A-t> <Action>(ManageRecentProjects)
+nmap <A-b> <Action>(Gradle.ExecuteTask)
+
+" comments
+nnoremap gcc :action CommentByLineComment<CR>
+vnoremap gc :action CommentByLineComment<CR>
+
+" next/prev
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>
+
+" reformatting
+map <leader>f <action>(ReformatCode)
+
+" goto
+map gd <action>(GotoDeclaration)
+map gI <action>(GotoImplementation)
+
+" Finding stuff
+map <leader>sf <action>(GotoFile)
+map <leader>sg <action>(FindInPath)
+map <leader><leader> <Action>(RecentFiles)
+
+" Window management
+map <leader>q <action>(CloseContent)
+
+" Refactoring
+map <leader>ca <Action>(Refactorings.QuickListPopupAction)
+map <leader>cr <Action>(RenameElement)

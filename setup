@@ -67,6 +67,9 @@ symlink "./vim/vimrc" "$HOME/.vimrc"
 ### NEOVIM
 symlink "./nvim" "$XDG_CONFIG_HOME/nvim"
 
+### IntelliJ
+symlink "./vim/ideavimrc" "$HOME/.ideavimrc"
+
 ### TMUX
 symlink "./tmux" "$XDG_CONFIG_HOME/tmux"
 
