@@ -9,6 +9,7 @@ set colorcolumn=80
 nmap <A-i> <Action>(ActivateTerminalToolWindow)
 nmap <A-t> <Action>(ManageRecentProjects)
 nmap <A-b> <Action>(Gradle.ExecuteTask)
+nmap <A-r> <Action>(ChooseRunConfiguration)
 
 " comments
 nnoremap gcc :action CommentByLineComment<CR>
@@ -23,6 +24,7 @@ map <leader>f <action>(ReformatCode)
 
 " goto
 map gd <action>(GotoDeclaration)
+map gt <action>(GotoTypeDeclaration)
 map gI <action>(GotoImplementation)
 
 " Finding stuff
